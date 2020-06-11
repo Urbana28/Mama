@@ -3,7 +3,7 @@
         <div class="logo">
             <img class="logo--desk" src="../../img/logo.png" alt="">
         </div>
-        <!--<div><ForgotPopup/></div>-->
+        <div><ForgotPopup/></div>
         <div class="form">
                 <form @submit.prevent="onSubmit">
                     <div class="fields">
