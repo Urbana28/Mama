@@ -1,6 +1,10 @@
 <template>
     <div class="input-wrapper">
-        <input :placeholder="placeholder" class="input" type="text">
+        <input
+                :placeholder="placeholder"
+                class="input" type="text"
+                @input="onChangeHandler($event.target.value)"
+        >
         <div class="input-icon">
             <img :src="require(`../../img/${img}`)" alt="">
         </div>
@@ -12,9 +16,16 @@
             name : 'Input',
             props : {
                 placeholder: String,
-                img: String
+                img: String,
+                vModel: String,
+                onChangeHandler: Function
+            },
 
-            }
+            methods: {
+                onChange: (value) => {
+
+                }
+        }
         }
 </script>
 
@@ -30,6 +41,8 @@
             border-bottom: solid 2px transparent;
             background: none;
             transition: .3s;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 300;
             font-size: 10.5px;
             line-height: 12px;
             color: #ffd800;

@@ -8,10 +8,17 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@chenfengyuan/vue-carousel": "^1.0.5",
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
+    "vue-burger-menu": "^2.0.5",
+    "vue-carousel": "^0.18.0",
+    "vue-dynamic-dropdown": "^1.0.12",
+    "vue-resize-observer": "^1.0.32",
+    "vue-responsive-components": "^0.2.3",
     "vue-router": "^3.2.0",
+    "vuelidate": "^0.7.5",
     "vuex": "^3.4.0"
   },
   "devDependencies": {

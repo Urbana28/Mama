@@ -1,6 +1,6 @@
 <template>
     <div class="button-wrapper">
-        <button>{{name}}</button>
+        <button :style="{ backgroundColor: color }"><router-link :to="{path}">{{name}}</router-link></button>
     </div>
 </template>
 
@@ -9,7 +9,11 @@
     export default {
         name: 'Button',
         props: {
-            name: String
+            name: String,
+            color: {
+                type: String
+            },
+            path: String
         }
     }
 
@@ -19,31 +23,55 @@
 <style scoped lang="scss">
     .button-wrapper {
         button {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            font-size: 12px;
             height: 30px;
             width: 100%;
             outline: none;
             border: none;
             border-radius: 30px;
             background: #ffcc00;
-            color: #fd3c1d;
             transition: .3s;
-            /*@font-face {
-                    font-family: 'Proxima Nova';
-                    src: local('Proxima Nova Bold.ttf');
-                    font-weight: 700;
-                    font-style: normal;
-                    font-size: 12px;
-                    lineheight: 16.5px;
-            }*/
+
+            a {
+                text-decoration: none;
+                color: #fd3c1d;
+                transition: .3s;
+            }
 
             &:active, &:focus {
                 transition: .3s;
-                background: #fd3c1d;
-                color: #ffd800;
+                background-color: #fd3c1d;
+                a {
+                    color: #ffd800;
+                    transition: .3s;
+                }
             }
 
             &:hover {
+                transition: .3s;
                 cursor: pointer;
+                background-color: #fd3c1d!important;
+                a {
+                    color: #ffd800;
+                    transition: .3s;
+                }
+            }
+
+
+            @media screen and (max-width: 562px) {
+                height: 50px;
+                width: 400px;
+                font-size: 20px;
+            }
+            @media screen and (max-width: 440px) {
+                font-size: 20px;
+                width: 350px;
+            }
+            @media screen and (max-width: 370px) {
+                font-size: 16px;
+                width: 290px;
             }
         }
 

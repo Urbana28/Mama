@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <div class="logo">
-            <img class="logo--desk" src="../img/logo.png" alt="">
-            <img class="logo--mob" src="../img/logo-mob.png" alt="">
+            <img class="logo--desk" src="../../img/logo.png" alt="">
+            <img class="logo--mob" src="../../img/logo-mob.png" alt="">
         </div>
     </div>
 </template>
@@ -16,7 +16,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%;
+        margin: 0 auto;
 
         .logo {
 
