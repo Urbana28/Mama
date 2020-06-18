@@ -46,40 +46,40 @@
 
 
 <style scoped lang="scss">
+
     .about-container {
         width: 100%;
         height: 100%;
         position: relative;
-        @media screen and (max-width: 562px) {
-            margin-top: 73px;
-        }
-
 
         .content {
             display: flex;
             flex-direction: column;
             position: relative;
             margin: 0 auto;
-            @media screen and (max-width: 562px) {
-                width: 82.206%;
-
-            }
 
             .backArrow {
                 position: absolute;
                 top: 26px;
                 left: 0;
-                @media screen and (max-width: 562px) {
-                    top: 3px;
+                @media screen and (max-width: 414px) {
+                    top: 57px;
+                }
+                @media screen and (max-width: 320px) {
+                    top: 40px;
                 }
             }
 
             .text {
                 margin-top: 21px;
                 margin-bottom: 131px;
-                @media screen and (max-width: 562px) {
-                    margin-bottom: 151px;
-
+                @media screen and (max-width: 414px) {
+                    margin-top: 70px;
+                    margin-bottom: 65px;
+                }
+                @media screen and (max-width: 320px) {
+                    margin-top: 45px;
+                    margin-bottom: 5px;
                 }
                 &--main {
                     margin-bottom: 32px;
@@ -92,9 +92,13 @@
                     line-height: 23px;
                     color: #ffcc00;
 
-                    @media screen and (max-width: 562px) {
-                        margin-bottom: 84px;
-                        font-size: 30px;
+                    @media screen and (max-width: 414px) {
+                        font-size: 21px;
+                        margin-bottom: 23px;
+                    }
+                    @media screen and (max-width: 320px) {
+                        font-size: 18px;
+                        margin-bottom: 18px;
                     }
                 }
 
@@ -105,10 +109,15 @@
                     line-height: 22.5px;
                     font-weight: bold;
                     color: #ffcc00;
-                    @media screen and (max-width: 562px) {
-                        margin-bottom: 84px;
-                        font-size: 35px;
-                        line-height: 40px;
+                    @media screen and (max-width: 414px) {
+                        margin-bottom: 35px;
+                        font-size: 20px;
+                        line-height: 24px;
+                    }
+                    @media screen and (max-width: 320px){
+                        margin-bottom: 25px;
+                        font-size: 18px;
+                        line-height: 20px;
                     }
                 }
 
@@ -125,11 +134,14 @@
                         font-stretch: normal;
                         font-weight: 400;
                         line-height: 12px;
-                        @media screen and (max-width: 562px) {
-                            margin-bottom: 50px;
-                            font-size: 25px;
-                            line-height: 34px;
-
+                        @media screen and (max-width: 414px) {
+                            margin-bottom: 13px;
+                            font-size: 12px;
+                            line-height: 20px;
+                            padding: 0 30px;
+                        }
+                        @media screen and (max-width: 320px) {
+                            line-height: 18px;
                         }
                     }
                 }
@@ -137,13 +149,13 @@
         }
 
         .buttons {
-            margin-bottom: 38px;
             a {
 
-                @media screen and (max-width: 562px) {
+                @media screen and (max-width: 414px) {
                     img {
-                        height: 61px;
-                        width: 60px;
+                        height: 31px;
+                        width: 31px;
+                        margin-right: 15px;
                     }
                 }
 

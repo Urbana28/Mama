@@ -24,10 +24,10 @@
             border: none;
             margin-left: 31px;
 
-            @media screen and (max-width: 562px) {
+            @media screen and (max-width: 414px) {
                 img {
-                    height: 36px;
-                    width: 21px;
+                    height: 27px;
+                    width: 18px;
                 }
             }
         }

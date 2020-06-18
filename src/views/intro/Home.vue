@@ -24,7 +24,7 @@
                 display: none;
             }
 
-            @media screen and (max-width: 562px) {
+            @media screen and (max-width: 414px) {
                 &--desk {
                     display: none;
                 }

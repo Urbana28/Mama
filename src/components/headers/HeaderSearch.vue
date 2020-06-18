@@ -12,14 +12,16 @@
             </div>
         </div>
         <div :style="{marginRight: menuRight}" class="header--menu">
-            <img src="../../img/menu.png" alt="">
+           <Menu />
         </div>
     </div>
 </template>
 
 <script>
+    import Menu from "../menu/Menu";
     export default {
         name: 'HeaderSearch',
+        components: {Menu},
         props:  {
             placeholder: String,
             width: {
@@ -56,7 +58,7 @@
 
             .logo {
                 margin-left: 139px;
-                margin-right: 35px;
+                margin-right: 25px;
                 img {
                     width: 102px;
                     height: 26px;
@@ -73,7 +75,7 @@
                     border: solid 2px #e8e8e8;
                     background-color: #ffffff;
                     padding-left: 17px;
-                    font-family: ProximaNova-It, sans-serif;
+                    font-family: 'Montserrat', sans-serif;
                     font-size: 9px;
                     font-weight: normal;
                     font-stretch: normal;

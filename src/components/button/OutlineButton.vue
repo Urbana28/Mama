@@ -23,6 +23,16 @@
            color: #ffcc00;
            background: none;
            outline: none;
+           font-family: 'Montserrat', sans-serif;
+           font-size: 12px;
+           line-height: 16.5px;
+
+           @media screen and (max-width: 414px){
+               font-size: 16px;
+               line-height: 26px;
+               height: 35px;
+               border-radius: 20.8px;
+           }
        }
    }
 </style>

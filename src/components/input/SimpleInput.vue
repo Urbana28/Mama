@@ -16,31 +16,24 @@
 
 <style scoped lang="scss">
     .input-wrapper {
-        margin-bottom: 24px;
-        @media screen and (max-width: 440px) {
-            width: 100%;
-        }
-
+        margin-bottom: 20px;
+        width: 100%;
 
         .input {
-            width: 401px;
+           width: 100%;
             outline: none;
             border: none;
             border-bottom: solid 2px #ffcc00;;
             background: none;
             font-family: "Montserrat", sans-serif;
-            font-size: 18px;
-            font-weight: normal;
-            font-stretch: normal;
-            font-style: normal;
-            line-height: 34px;
-            letter-spacing: normal;
-            text-align: left;
+            font-size: 16px;
+            line-height: 22px;
+            text-align: center;
             color: #ffd800;
 
             &::placeholder {
-                font-size: 18px;
-                line-height: 34px;
+                font-size: 16px;
+                line-height: 22px;
                 color: #ffd800;
                 opacity: 1;
                 transition: .3s;
@@ -51,12 +44,20 @@
                 opacity: 0;
             }
 
-            @media screen and (max-width: 440px) {
+            @media screen and (max-width: 414px) {
                 width: 100%;
+                font-size: 16px;
+
+                &::placeholder {
+                    font-size: 17px;
+                }
             }
             @media screen and (max-width: 320px) {
                 width: 100%;
-                font-size: 14px;
+                font-size: 15px;
+                &::placeholder {
+                    font-size: 15px;
+                }
             }
         }
     }

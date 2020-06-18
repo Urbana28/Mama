@@ -15,7 +15,7 @@
                 <div class="question-restaurant">
                     <div class="question">
                         <span>
-                            What is a Chinese restaurant <br>
+                            What is a restaurant
                         you would recommend?
                         </span>
                     </div>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div class="content--btn">
-                <Button name="Next"/>
+                <Button name="Recommendation"/>
             </div>
         </div>
     </div>
@@ -63,19 +63,17 @@
         position: relative;
 
         .content {
-            margin-top: 34px;
             position: relative;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
 
 
             .backArrow {
                 position: absolute;
-                top: -9px;
-                left: 33px;
+                top: 27px;
+                left: 10px;
 
                 button {
                     background: none;
@@ -83,59 +81,65 @@
                     border: none;
                 }
 
-                @media screen and (max-width: 562px) {
-                    top: 10px;
+                @media screen and (max-width: 414px) {
+                    top: 43px;
                     left: 0;
-                    button {
-                        img {
-                            width: 20px;
-                            height: 34px;
-                        }
-                    }
                 }
-                @media screen and (max-width: 440px) {
-                    top: 10px;
+                @media screen and (max-width: 320px) {
+                    top: 43px;
                     left: 0;
-                    button {
-                        img {
-                            width: 17px;
-                            height: 30px;
-                        }
-                    }
                 }
             }
 
             .main-title {
+                margin-top: 34px;
                 margin-bottom: 48px;
-                font-family: CooperStd, sans-serif;
-                font-size: 18px;
-                font-weight: 500;
-                font-stretch: normal;
-                font-style: normal;
+                font-family: 'Lato', sans-serif;
+                font-size: 21px;
+                font-weight: 400;
                 line-height: 29.5px;
-                letter-spacing: normal;
                 text-align: center;
                 color: #ffcc00;
+
+                @media screen and (max-width: 470px){
+                    margin-top: 120px;
+                    margin-bottom: 100px;
+                    width: 210px;
+                    font-size: 22px;
+                    line-height: 26.5px;
+                }
+                @media screen and (max-width: 320px){
+                    margin-top: 90px;
+                    width: 210px;
+                    font-size: 20px;
+                    line-height: 26.5px;
+                }
             }
 
             .form {
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
-                align-items: flex-start;
+                justify-content: center;
+                align-items: center;
+
 
                 .question-restaurant {
+                    margin-bottom: 36px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                     .question {
-                        margin-bottom: 23px;
-                        font-family: ProximaNova,sans-serif;
+                        margin-bottom: 10px;
+                        font-family: 'Montserrat',sans-serif;
                         font-size: 18px;
                         font-weight: bold;
-                        font-stretch: normal;
-                        font-style: normal;
                         line-height: 23px;
-                        letter-spacing: normal;
                         text-align: center;
                         color: #ffcc00;
+                    }
+
+                    .field {
+                        width: 300px;
                     }
                 }
 
@@ -150,43 +154,82 @@
                         outline: none;
                         background: none;
                         color:  #ffcc00;
+                        font-family: "Montserrat", sans-serif;
+                        font-size: 11.5px;
                     }
 
-                    .add-btn--circle {
+                   &--circle {
                         position: absolute;
-                        top: 2.5px;
-                        left: 3.5px;
+                        top: 2.3px;
+                        left: 3.3px;
                         border: 1px solid #ffcc00;
                         border-radius: 100%;
                         width: 12px;
                         height: 12px;
                     }
+
+                    @media screen and (max-width: 414px) {
+                        button {
+                            font-size: 13px;
+                        }
+
+                        &--circle {
+                            top: 3.5px;
+                            left: 3.9px;
+                        }
+                    }
+                    @media screen and (max-width: 320px) {
+                        button {
+                            font-size: 12px;
+                        }
+
+                        &--circle {
+                            top: 2.3px;
+                            left: 3.3px;
+                        }
+                    }
                 }
 
-                @media screen and (max-width: 440px) {
-                    width: 100%;
-                    max-width: 441px;
-                    margin-bottom: 190px;
+                @media screen and (max-width: 414px){
+                    width: 350px;
+                    .question-restaurant {
+                        margin-bottom: 45px;
+                        .question {
+                            font-size: 16.6px;
+                        }
+                        .field {
+                            width: 300px;
+                        }
+                    }
                 }
-                @media screen and (max-width: 320px) {
-                    margin-bottom: 130px;
+                @media screen and (max-width: 320px){
+                    width: 310px;
+                    .question-restaurant {
+                        margin-bottom: 10px;
+                        .question {
+                            font-size: 14.6px;
+                        }
+                        .field {
+                            width: 270px;
+                        }
+                    }
                 }
             }
 
             &--btn {
-                margin-top: 58px;
-                margin-bottom:80px;
+                margin-bottom: 22px;
                 width: 223px;
+
+                @media screen and (max-width: 414px) {
+                    margin-bottom: 32px;
+                    width: 295px;
+                }
+                @media screen and (max-width: 320px) {
+                    margin-bottom: 32px;
+                    margin-top: 30px;
+                    width: 250px;
+                }
             }
-        }
-
-
-        @media screen and (max-width: 562px) {
-            padding: 0 20px;
-        }
-
-        @media screen and (max-width: 440px) {
-            padding: 0 30px;
         }
     }
 </style>

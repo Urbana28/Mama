@@ -47,6 +47,10 @@
                 font-family: "Montserrat", sans-serif;
                 font-weight: 700;
                 font-size: 10.5px;
+
+                @media screen and (min-width: 320px) {
+                    font-size: 14.5px;
+                }
             }
 
         }

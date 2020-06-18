@@ -51,17 +51,17 @@
         position: relative;
 
         .content {
-            margin-top: 34px;
             position: relative;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            align-items: center;
+            width: 100%;
 
 
             .backArrow {
                 position: absolute;
-                top: 0;
+                top: 22px;
                 left: 33px;
 
                 button {
@@ -70,107 +70,88 @@
                     border: none;
                 }
 
-                @media screen and (max-width: 562px) {
-                    top: 10px;
-                    left: 0;
-                    button {
-                        img {
-                            width: 20px;
-                            height: 34px;
-                        }
-                    }
+                @media screen and (max-width: 414px) {
+                    top: 45px;
+                    left: 20px;
                 }
-                @media screen and (max-width: 440px) {
-                    top: 10px;
+                @media screen and (max-width: 320px) {
+                    top: 45px;
                     left: 0;
-                    button {
-                        img {
-                            width: 17px;
-                            height: 30px;
-                        }
-                    }
                 }
             }
 
             &--titles {
                 display: flex;
                 flex-direction: column;
-                margin-top: 20px;
+                align-items: center;
+                margin-top: 34px;
 
                 .invite-title {
-                    font-family: ProximaNova, sans-serif;
+                    font-family: 'Montserrat', sans-serif;
                     font-size: 18px;
                     line-height: 23px;
                     font-weight: bold;
-                    font-stretch: normal;
-                    font-style: normal;
-                    letter-spacing: normal;
                     text-align: center;
                     color: #ffcc00;
                     margin-bottom: 29px;
-
-                    @media screen and (max-width: 562px) {
-                        font-size: 24px;
-                        margin-bottom: 80px;
-                    }
-                    @media screen and (max-width: 562px) {
-                        font-size: 22px;
-                        margin-bottom: 80px;
-                    }
-                    @media screen and (max-width: 370px) {
-                        font-size: 18px;
-                    }
                 }
 
                 .mama-title {
-                    font-family: CooperStd, sans-serif;
-                    font-size: 18px;
-                    font-weight: 900;
-                    font-stretch: normal;
-                    font-style: normal;
+                    font-family: 'Lato', sans-serif;
+                    font-size: 20px;
+                    font-weight: 400;
                     line-height: 22.5px;
-                    letter-spacing: normal;
                     text-align: center;
                     color: #ffcc00;
                     margin-bottom: 47px;
-
-                    @media screen and (max-width: 562px) {
-                        font-size: 24px;
-                        line-height: 26px;
-                    }
-                    @media screen and (max-width: 440px) {
-                        font-size: 22px;
-                        line-height: 26px;
-                    }
-                    @media screen and (max-width: 370px) {
-                        font-size: 18px;
-                    }
                 }
 
                 .thanks-title {
-                    font-family: ProximaNova,sans-serif;
+                    font-family: 'Montserrat',sans-serif;
                     font-size: 18px;
                     font-weight: bold;
-                    font-stretch: normal;
-                    font-style: normal;
                     line-height: 23px;
-                    letter-spacing: normal;
                     text-align: center;
                     color: #ffcc00;
                     margin-bottom: 63px;
+                }
 
-                    @media screen and (max-width: 562px) {
-                        font-size: 22px;
-                        line-height: 26px;
-                        margin-bottom: 90px;
+                @media screen and (max-width: 414px) {
+                    margin-top: 47px;
+
+                    .invite-title {
+                        font-size: 19px;
+                        line-height: 26.6px;
                     }
-                    @media screen and (max-width: 440px) {
-                        font-size: 20px;
-                        line-height: 26px;
-                        margin-bottom: 90px;
+                    .mama-title {
+                        font-size: 23.3px;
+                        line-height: 26.6px;
+                        width: 188px;
+                        margin-bottom: 130px;
                     }
-                    @media screen and (max-width: 370px) {
-                        font-size: 16px;
+                    .thanks-title {
+                        font-size: 16.6px;
+                        line-height: 22.6px;
+                        margin-bottom: 160px;
+                    }
+                }
+                @media screen and (max-width: 320px) {
+                    margin-top: 47px;
+
+                    .invite-title {
+                        font-size: 19px;
+                        line-height: 26.6px;
+                    }
+                    .mama-title {
+                        font-size: 21.3px;
+                        line-height: 23.6px;
+                        width: 188px;
+                        margin-bottom: 100px;
+                    }
+                    .thanks-title {
+                        font-size: 15.6px;
+                        line-height: 20.6px;
+                        margin-bottom: 130px;
                     }
                 }
             }
@@ -179,29 +160,19 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                margin-bottom: 50px;
 
                 .btn {
                     margin-bottom: 14px;
                     width: 223px;
-                }
 
-                @media screen and (max-width: 562px) {
-                    width: 100%;
-
-                    .btn {
-                        width: 100%;
+                    @media screen and (max-width: 414px){
+                        width: 300px;
+                    }
+                    @media screen and (max-width: 320px){
+                        width: 260px;
                     }
                 }
             }
-        }
-
-
-        @media screen and (max-width: 562px) {
-            padding: 0 20px;
-        }
-        @media screen and (max-width: 440px) {
-            padding: 0 10px;
         }
     }
 

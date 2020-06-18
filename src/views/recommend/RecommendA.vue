@@ -7,15 +7,15 @@
             <div class="backArrow">
                 <BackArrow path="/homepage"/>
             </div>
-            <div class="flag">
-                <img src="../../img/flag.png" alt="">
-            </div>
             <div class="content--titles">
                 <div class="main-title">
                     Great!
                 </div>
+                <div class="flag">
+                    <img src="../../img/flag.png" alt="">
+                </div>
                 <div class="question-title">
-                    What is a Chinese restaurant <br>
+                    What is a Chinese restaurant
                     you would recommend?
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 <SimpleInput placeholder="Begin typing name restaurant"/>
             </div>
             <div class="content--paginator">
-                <img src="../../img/pagination.png" alt="">
+                <img src="../../img/pagination-mob.png" alt="">
             </div>
         </div>
     </div>
@@ -49,19 +49,16 @@
         position: relative;
 
         .content {
-            margin-top: 34px;
             position: relative;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
-
 
             .backArrow {
                 position: absolute;
-                top: 0;
-                left: 33px;
+                top: 24px;
+                left: 32px;
 
                 button {
                     background: none;
@@ -69,113 +66,101 @@
                     border: none;
                 }
 
-                @media screen and (max-width: 562px) {
-                    top: 10px;
-                    left: 0;
-                    button {
-                        img {
-                            width: 20px;
-                            height: 34px;
-                        }
-                    }
+                @media screen and (max-width: 414px){
+                    top: 44px;
+                    left: 10px;
                 }
-                @media screen and (max-width: 440px) {
-                    top: 10px;
-                    left: 0;
-                    button {
-                        img {
-                            width: 17px;
-                            height: 30px;
-                        }
-                    }
+                @media screen and (max-width: 320px){
+                    top: 31px;
+                    left: 10px;
                 }
             }
 
-            .flag {
-                img {
-                    margin-top: 25px;
-                    margin-bottom: 19px;
 
-                    @media screen and (max-width: 562px) {
-                        height: 95px;
-                        width: 145px;
-                    }
-                }
-            }
 
             &--titles {
+                margin-top: 34px;
                 .main-title {
-                    margin-bottom: 23px;
-                    font-family: CooperStd, sans-serif;
-                    font-size: 18px;
-                    font-weight: 900;
-                    font-stretch: normal;
-                    font-style: normal;
+                    margin-bottom: 10px;
+                    font-family: 'Lato', sans-serif;
+                    font-size: 20px;
+                    font-weight: 600;
                     line-height: 29.5px;
-                    letter-spacing: normal;
                     text-align: center;
                     color: #ffcc00;
 
-                    @media screen and (max-width:414px) {
-                        margin-bottom: 50px;
+                    @media screen and (max-width: 414px){
+                        margin-bottom: 73px;
                     }
-                    @media screen and (max-width:360px) {
-                        margin-bottom: 41px;
+                    @media screen and (max-width: 320px){
+                        margin-bottom: 45px;
                     }
-                    @media screen and (max-width:320px) {
-                        margin-bottom: 29px;
+                }
+
+                .flag {
+                    margin-bottom: 59px;
+                    img {
+                        width: 56px;
+                        height: 38px;
+                    }
+
+                    @media screen and (max-width: 414px){
+                        margin-top: 68px;
+                        img {
+                            width: 111px;
+                            height: 74px;
+                        }
+                    }
+                    @media screen and (max-width: 320px){
+                        margin-top: 68px;
+                        img {
+                            width: 100px;
+                            height: 63px;
+                        }
                     }
                 }
 
                 .question-title {
-                    font-family: ProximaNova, sans-serif;
-                    font-size: 18px;
+                    font-family: 'Montserrat', sans-serif;
+                    font-size: 16px;
                     font-weight: bold;
-                    font-stretch: normal;
-                    font-style: normal;
                     line-height: 23px;
-                    letter-spacing: normal;
                     text-align: center;
                     color: #ffcc00;
 
-                    @media screen and (max-width:414px) {
-                        margin-bottom: 13px;
-                    }
-                    @media screen and (max-width:360px) {
+                    @media screen and (max-width: 414px){
                         font-size: 16px;
-                        line-height: 21px;
-                        margin-bottom: 0;
+                        line-height: 20px;
+                        width: 278px;
+                    }
+
+                    @media screen and (max-width: 320px){
+                        font-size: 16px;
+                        line-height: 20px;
+                        width: 278px;
                     }
                 }
             }
 
             .form {
                 display: flex;
-                margin-top: 23px;
+                margin-top: 5px;
                 margin-bottom: 201px;
+                width: 400px;
 
-                @media screen and (max-width: 440px) {
-                    width: 100%;
-                    max-width: 441px;
-                    margin-bottom: 190px;
+                @media screen and (max-width: 414px) {
+                    width: 300px;
+                    margin-bottom: 180px;
                 }
                 @media screen and (max-width: 320px) {
-                    margin-bottom: 130px;
+                    width: 270px;
+                    margin-bottom: 140px;
                 }
             }
 
             &--paginator {
                 margin-bottom: 52px;
             }
-        }
-
-
-        @media screen and (max-width: 562px) {
-            padding: 0 20px;
-        }
-
-        @media screen and (max-width: 440px) {
-            padding: 0 30px;
         }
     }
 </style>

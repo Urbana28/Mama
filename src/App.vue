@@ -21,23 +21,31 @@
    font-family: 'Proxima Nova';
    src: url("../src/assets/Proxima Nova2/ProximaNova/ProximaNova-Regular.otf") format('opentype');
    font-weight: 400;
-   font-style: normal;
+
  }
  @font-face {
-   font-family: 'Proxima Nova';
+   font-family: 'Proxima Nova Bold';
    src: url("../src/assets/Proxima Nova2/ProximaNova/Proxima Nova Bold.otf") format('opentype');
    font-weight: 700;
-   font-style: normal;
+
  }
  @font-face {
-   font-family: 'Proxima Nova';
+   font-family: 'Proxima Nova Thin';
    src: url("../src/assets/Proxima Nova2/ProximaNova/Proxima Nova Thin.otf") format('opentype');
    font-weight: 300;
-   font-style: normal;
  }
 
+ @font-face {
+   font-family: 'Cooper Black';
+   src: url("../src/assets/Cooper Black/Cooper Black") format('opentype');
+   font-weight: 400;
+
+ }
+
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "ProximaNova", sans-serif;
+  font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -54,7 +62,7 @@
     border: 3px solid green;
     flex-grow: 1;
     display: flex;
-    min-height: 540px;
+   height: 100vh;
   }
 }
 

@@ -5,7 +5,7 @@
         </div>
         <div class="content">
             <div class="backArrow">
-               <BackArrow path="#"/>
+                <BackArrow path="#"/>
             </div>
 
             <div class="logo">
@@ -14,6 +14,9 @@
             <div class="content--title">
                 Congrats!<br>
                 Welcome to the family.
+            </div>
+            <div class="content--pic">
+                <img src="../../img/MAMA_Fam.png" alt="">
             </div>
             <div class="content--button">
                 <Button path="/homepage" name="Go to the list"/>
@@ -43,17 +46,16 @@
         position: relative;
 
         .content {
-            margin-top: 34px;
             position: relative;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-
+            width: 100%;
+            align-items: center;
 
             .backArrow {
                 position: absolute;
-                top: 0;
+                top: 30px;
                 left: 33px;
 
                 button {
@@ -62,103 +64,64 @@
                     border: none;
                 }
 
-                @media screen and (max-width: 562px) {
-                    top: 40px;
-                    left: 3px;
-                    button {
-                        img {
-                            width: 20px;
-                            height: 34px;
-                        }
-                    }
-                }
-                @media screen and (max-width: 440px) {
-                    top: 10px;
+                @media screen and (max-width: 414px) {
+                    top: 45px;
                     left: 0;
-                    button {
-                        img {
-                            width: 17px;
-                            height: 30px;
-                        }
-                    }
                 }
             }
 
             .logo {
                 display: none;
 
-                @media screen and (max-width: 562px) {
+                @media screen and (max-width: 564px) {
                     display: block;
-                    margin-bottom: 99px;
-                    margin-top: 90px;
+                    margin-top: 144px;
                     img {
-                        width: 263px;
-                        height: 67px;
+                        height: 46px;
+                        width: 177px;
                     }
                 }
-                @media screen and (max-width: 370px) {
+                @media screen and (max-width: 320px) {
                     display: block;
-                    margin-bottom: 99px;
-                    margin-top: 90px;
+                    margin-top: 110px;
                     img {
-                        width: 203px;
-                        height: 53px;
+                        height: 46px;
+                        width: 177px;
                     }
                 }
             }
 
             &--title {
-                font-family: CooperStd, sans-serif;
-                font-size: 18px;
-                font-weight: 500;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: 22.5px;
-                letter-spacing: normal;
+                font-family: 'Lato', sans-serif;
+                font-size: 22px;
+                font-weight: 400;
+                line-height: 26.5px;
                 text-align: center;
                 color: #ffcc00;
+                margin-top: 34px;
+                margin-bottom: 30px;
 
-                @media screen and (max-width: 562px) {
-                    font-size: 31.5px;
-                    line-height: 36px;
-                    margin: 0 auto;
+                @media screen and (max-width: 414px) {
+                    width: 230px;
+                    font-size: 23px;
                 }
-                @media screen and (max-width: 440px) {
-                    font-size: 27px;
-                }
+            }
+
+            &--pic {
+                margin-bottom: 30px;
             }
 
             &--button {
-                    width: 223px;
-                    margin: 91px auto 284px;
-                    font-size: 12px;
+                width: 223px;
 
-                @media screen and (max-width: 562px) {
-                    margin-top: 134px;
-                    margin-bottom: 100px;
-                    width: 100%;
+                @media screen and (max-width: 414px) {
+                    width: 296px;
                 }
-                @media screen and (max-width: 440px) {
-                    margin-top: 134px;
-                    margin-bottom: 90px;
-                    width: 100%;
-                }
-                @media screen and (max-width: 370px) {
-                    margin-top: 104px;
-                    margin-bottom: 80px;
-                    width: 100%;
+                @media screen and (max-width: 320px) {
+                    width: 260px;
                 }
             }
         }
 
-
-        @media screen and (max-width: 562px) {
-            padding: 0 50px;
-            margin-bottom: 113px;
-        }
-        @media screen and (max-width: 440px) {
-            padding: 0 30px;
-            margin-bottom: 113px;
-        }
     }
 </style>

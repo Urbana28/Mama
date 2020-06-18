@@ -21,6 +21,9 @@
                 <li class="mobile-menu__item">
                     <router-link id="saved" to="#">Saved Restaurants</router-link>
                 </li>
+                <li class="mobile-menu__terms">
+                    <router-link to="#">Terms & Conditions</router-link>
+                </li>
             </ul>
         </div>
     </div>
@@ -38,7 +41,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 35px;
+        width: 30px;
         height: 30px;
         cursor: pointer;
         transition: .4s;
@@ -103,10 +106,10 @@ export default {
         padding: 7.5px;
         transition: .3s;
         a {
-
             text-decoration: none;
             color: #ff3c00;
         }
+
         &:hover, &:active, &:focus {
             background-color: #ff3c00;
             cursor: pointer;
@@ -116,6 +119,20 @@ export default {
             }
         }
     }
+
+    .mobile-menu__terms {
+        background: none;
+        a {
+            text-decoration: none;
+            color: #b6bed4;
+            font-family: "Montserrat", sans-serif;
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+
+    }
+
 
     .mobile-menu__checkbox {
         display: none;

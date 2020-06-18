@@ -25,7 +25,7 @@
         button {
             font-family: "Montserrat", sans-serif;
             font-weight: 400;
-            font-size: 12px;
+            font-size: 13px;
             height: 30px;
             width: 100%;
             outline: none;
@@ -59,19 +59,16 @@
                 }
             }
 
+            @media screen and (max-width: 414px){
+                height: 38px;
+                font-size: 17px;
+                line-height: 17px;
+            }
 
-            @media screen and (max-width: 562px) {
-                height: 50px;
-                width: 400px;
-                font-size: 20px;
-            }
-            @media screen and (max-width: 440px) {
-                font-size: 20px;
-                width: 350px;
-            }
-            @media screen and (max-width: 370px) {
-                font-size: 16px;
-                width: 290px;
+            @media screen and (max-width: 320px){
+                height: 33px;
+                font-size: 15px;
+                line-height: 15px;
             }
         }
 

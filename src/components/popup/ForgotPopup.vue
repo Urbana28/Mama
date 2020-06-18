@@ -1,17 +1,19 @@
 <template>
     <div class="forgot-container">
-        <div class="content">
-            <form class="content--form" @submit.prevent="onSubmit">
-                <div class="input-wrapper">
-                    <input v-model.trim="email" placeholder="Email" class="input" type="text">
-                </div>
-                <small class="invalidMessage" v-if="$v.email.$dirty && !$v.email.required">Field is required</small>
-                <small class="invalidMessage" v-else-if="$v.email.$dirty && !$v.email.email">Incorrect email</small>
-                <div class="btn">
-                    <button type="submit">Send</button>
-                </div>
-            </form>
-        </div>
+    <div class="content">
+        <form class="content--form" @submit.prevent="onSendPass">
+            <div class="title">Please, enter email</div>
+            <div class="input-wrapper">
+                <input v-model.trim="email" placeholder="Email" class="input" type="text">
+            </div>
+            <small class="invalidMessage" v-if="$v.email.$dirty && !$v.email.required">Field is required</small>
+            <small class="invalidMessage" v-else-if="$v.email.$dirty && !$v.email.email">Incorrect email</small>
+            <div class="btn">
+                <button type="submit">Send</button>
+                <button v-on:click="callback(false)">Cancel</button>
+            </div>
+        </form>
+    </div>
     </div>
 </template>
 
@@ -20,6 +22,9 @@
 
     export default {
         name: 'ForgotPopup',
+        props: {
+            callback: Function
+        },
         data () {
             return {
                 email: ''
@@ -29,7 +34,7 @@
             email: {email, required}
         },
         methods: {
-            onSubmit () {
+            onSendPass () {
                 if(this.$v.$invalid) {
                     this.$v.$touch()
                     return
@@ -39,20 +44,27 @@
                     password: this.password
                 }
                 console.log(formData)
+            },
+            setIsOpen (value) {
+                return this.isPopupOpen = value
             }
+
         }
     }
 </script>
 
 <style scoped lang="scss">
     .forgot-container {
-        width: 265px;
-        height: 207px;
+        width: 300px;
+        height: 231px;
         background-color: white;
         border: solid 1px #707070;
         border-radius: 6px;
 
         .content {
+            position: relative;
+            margin-top: 30px;
+
             &--form {
                 display: flex;
                 flex-direction: column;
@@ -66,8 +78,15 @@
                     font-weight: 500;
                 }
 
+                .title {
+                    font-family: "Montserrat", sans-serif;
+                    color: black;
+                    font-weight: 600;
+                    margin-bottom: 25px;
+                }
+
                 .input-wrapper {
-                    margin-bottom: 24px;
+                    margin-bottom: 5px;
 
                     .input {
                         width: 203px;
@@ -102,19 +121,21 @@
                 }
 
                 .btn {
+                    display: flex;
+                    margin-top: 35px;
                     button {
+                        margin: 0 2px;
                         font-family: "Montserrat", sans-serif;
                         font-weight: 400;
                         font-size: 12px;
                         height: 30px;
-                        width: 203px;
+                        width:103px;
                         outline: none;
                         border: none;
                         border-radius: 30px;
                         background: #ffcc00;
                         transition: .3s;
                         color: #fd3c1d;
-
 
                         &:active, &:focus {
                             transition: .3s;
@@ -132,5 +153,17 @@
                 }
             }
         }
+
+        @media screen and (max-width: 375px) {
+            width: 320px;
+            height: 240px;
+
+        }
+
+        @media screen and (max-width: 320px){
+            width: 300px;
+            height: 230px;
+        }
+
     }
 </style>

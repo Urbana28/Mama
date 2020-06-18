@@ -25,6 +25,14 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/general/About.vue')
   },
     {
+      path: '/welcome',
+      name: 'Welcome',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ '../views/general/Welcome.vue')
+    },
+    {
       path: '/waitlist',
       name: 'Join Waitlist',
       // route level code-splitting
@@ -113,6 +121,22 @@ Vue.use(VueRouter)
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ '../views/restaurants/Homepage')
+    },
+    {
+      path: '/ethnicity',
+      name: 'EthnicityPage',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ '../views/ethnicity/EthnicityPage')
+    },
+    {
+      path: '/filtered',
+      name: 'RestaurantsByEthnicity',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ '../views/restaurants/RestaurantsByEthnicity')
     }
 ]
 
