@@ -100,8 +100,7 @@
             },
             setIsOpen(value) {
                 return this.isPopupOpen = value
-            },
-            // ...mapActions(['LOGIN_USER'])
+            }
         }
     }
 </script>

@@ -16,7 +16,7 @@ const store = new Vuex.Store({
         async loginUser(context, payload) {
             try {
                 const response = await authAPI.login(payload)
-                console.log(response)
+                console.log("response")
                 localStorage.setItem('token', response.data.access)
             } catch (e) {
                 console.log(e)

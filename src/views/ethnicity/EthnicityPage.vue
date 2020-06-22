@@ -19,29 +19,20 @@
                     most identify with?
                 </div>
                 <div class="ethnicity">
-                    <div class="ethnicity--lang">
-                        <div v-for="e in ETHNICITY" class="cuisine" :id="e.id">
+                    <div v-if="ethnicityByLetter === null" class="ethnicity--lang">
+                        <div v-on:click="selectEthnicity(e.id)" v-for="e in ETHNICITY" class="cuisine" :id="e.id">
+                            <div class="flag"><img :src="e.flag" alt=""></div>
+                            <div class="name">{{e.name}}</div>
+                        </div>
+                    </div>
+                    <div v-else-if="ethnicityByLetter !== null" class="ethnicity--lang">
+                        <div v-on:click="selectEthnicity(e.id)" v-for="e in ethnicityByLetter" class="cuisine" :id="e.id">
                             <div class="flag"><img :src="e.flag" alt=""></div>
                             <div class="name">{{e.name}}</div>
                         </div>
                     </div>
                     <div class="ethnicity--alph">
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
-                        <div class="letter">A</div>
+                        <div v-on:click="setEthnicityByLetter(l)" v-for="l in LETTERS" :key="l" class="letter">{{l}}</div>
                     </div>
                 </div>
                 <div class="btn">
@@ -61,22 +52,30 @@
     import Header from "../../components/headers/Header";
     import BackArrow from "../../components/button/BackArrow";
     import Popup from "../../components/popup/Popup";
-    import {mapActions, mapGetters} from "vuex";
+    import {mapGetters} from "vuex";
 
     export default {
         name: 'EthnicityPage',
         components: {Header, BackArrow, Popup},
         data() {
             return {
-                isPopupOpen: false
+                isPopupOpen: false,
+                ethnicityByLetter: null
             }
         },
         computed: {
-            ...mapGetters('restaurantsModule', ['ETHNICITY'])
+            ...mapGetters('restaurantsModule', ['ETHNICITY', 'LETTERS'])
         },
         methods: {
             setIsOpen(value) {
                 return this.isPopupOpen = value
+            },
+            selectEthnicity (id) {
+               return console.log(id)
+            },
+            setEthnicityByLetter (value) {
+                debugger
+                return this.ethnicityByLetter = this.ETHNICITY.filter( (e) => e.name.charAt(0) === value)
             }
         },
         mounted () {
@@ -201,6 +200,9 @@
 
                         .cuisine {
                             display: flex;
+                            &:hover, &:focus, &:active {
+                                cursor: pointer;
+                            }
 
                             .flag {
                                 margin-right: 20px;
@@ -234,35 +236,33 @@
                         &--lang {
                             font-size: 15.68px;
                             line-height: 59.72px;
-                            margin-right: 75px;
-                            margin-left: 54px;
+                            margin-right: 10px;
+                            margin-left: 30px;
                         }
                         &--alph {
                             font-size: 12.01px;
-                            line-height: 18.35px;
+                            line-height: 24.35px;
                             margin-left: 85px;
                         }
                     }
                     @media screen and (max-width: 376px) {
-
+                        height: 440px;
                         margin-bottom: 25px;
-
-
                         &--lang {
                             font-size: 13px;
                             line-height: 49.72px;
-                            margin-right: 68px;
-                            margin-left: 40px;
+                            margin-right: 40px;
+                            margin-left: 23px;
                         }
                         &--alph {
-                            font-size: 10.5px;
-                            line-height: 18.35px;
+                            font-size: 12.5px;
+                            line-height: 24.35px;
                             margin-left: 85px;
                         }
                     }
 
                     @media screen and (max-width: 360px) {
-                        height: 393px;
+                        height: 365px;
                         margin-bottom: 25px;
 
 
@@ -288,7 +288,7 @@
                         &--lang {
                             font-size: 13.68px;
                             line-height: 46.72px;
-                            margin-right: 0px;
+                            margin-right: 0;
                             margin-left: 38px;
                         }
                         &--alph {
@@ -345,12 +345,10 @@
             }
 
             @media screen and (max-width: 414px) {
-                padding: 0 20px;
                 justify-content: center;
                 margin-top: 0;
             }
             @media screen and (max-width: 320px) {
-                padding: 0 0;
                 justify-content: center;
                 margin-top: 0;
             }

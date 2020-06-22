@@ -6,76 +6,7 @@ export const restaurantsModule = {
         ethnicity: [],
         letters: [],
         selectedEthnicity: null,
-        restaurants: [
-            {
-                id: 1, name: 'New Capital Seafood', img: 'https://image.flaticon.com/icons/svg/3013/3013926.svg',
-                ethnicity: 'Singaporean', place: ' Hainan ', distance: '1.2mi', priceCategory: '$$$'
-            },
-            {
-                id: 2,
-                name: 'BCD Tofuhouse',
-                img: 'https://image.flaticon.com/icons/svg/3013/3013926.svg',
-                ethnicity: 'Cambodian',
-                place: ' Hainan ',
-                distance: '1.2mi',
-                priceCategory: '$$$$'
-            },
-            {
-                id: 3,
-                name: 'Izakaya Hachi',
-                img: 'https://image.flaticon.com/icons/svg/3013/3013926.svg',
-                ethnicity: 'Chinese',
-                place: ' Hainan ',
-                distance: '1.2mi',
-                priceCategory: '$$'
-            },
-            {
-                id: 4,
-                name: 'Pho Super Bowl',
-                img: 'https://image.flaticon.com/icons/svg/3013/3013926.svg',
-                ethnicity: 'Indonesian',
-                place: ' Hainan ',
-                distance: '1.2mi',
-                priceCategory: '$$$'
-            },
-            {
-                id: 5,
-                name: 'Max’s Restaurant',
-                img: 'https://image.flaticon.com/icons/svg/3013/3013926.svg',
-                ethnicity: 'Japanese',
-                place: ' Hainan ',
-                distance: '1.2mi',
-                priceCategory: '$'
-            },
-            {
-                id: 6,
-                name: 'Five Star Seafood',
-                img: 'https://image.flaticon.com/icons/svg/3013/3013926.svg',
-                ethnicity: 'Korean',
-                place: ' Hainan ',
-                distance: '1.2mi',
-                priceCategory: '$$'
-            },
-            {
-                id: 7,
-                name: 'Star Sea',
-                img: 'https://image.flaticon.com/icons/svg/3013/3013926.svg',
-                ethnicity: 'Korean',
-                place: ' Hainan ',
-                distance: '1.2mi',
-                priceCategory: '$$'
-            },
-            {
-                id: 8,
-                name: 'Seafood',
-                img: 'https://image.flaticon.com/icons/svg/3013/3013926.svg',
-                ethnicity: 'Japanese',
-                place: ' Hainan ',
-                distance: '1.2mi',
-                priceCategory: '$$'
-            }
-        ],
-        restaurantsByPrice: null,
+        restaurants: null,
         restaurantsByEthnicity: null,
         searchedRestaurants: null
     },
@@ -83,12 +14,15 @@ export const restaurantsModule = {
         SET_ETHNICITY: (state, ethnicityList) => {
             state.ethnicity = ethnicityList
         },
+        SET_LETTERS: (state, letters) => {
+            state.letters = letters.filter((e, i) => {if(i < letters.length - 1) {return e.charAt(0) !== letters[i + 1].charAt(0)} return e}).map((i) => i.charAt(0))
+        },
         selectEthnicity(state, ethnId) {
             state.selectedEthnicity = state.ethnicity.filter(e => e.id === ethnId)
         },
-        selectPriceCategory(state, value) {
-            state.restaurantsByPrice = state.restaurants.filter(r => r.priceCategory === value)
-        },
+       SET_RESTAURANTS_LIST: (state, restaurantsList) => {
+            state.restaurants = restaurantsList
+       },
         setRestaurantsByEthnicity(state, value) {
             state.restaurantsByEthnicity = state.restaurants.filter(r => r.ethnicity === value)
         },
@@ -101,14 +35,31 @@ export const restaurantsModule = {
             try {
                 const list = await restaurantsAPI.getEthnicity()
                 context.commit('SET_ETHNICITY', list)
+                let names = list.map( l => l.name)
+                context.commit('SET_LETTERS', names)
+            } catch (e) {
+                console.log(e)
+            }
+        },
+        async getRestaurantsList (context, price) {
+            try {
+                //const list = await restaurantsAPI.getRestaurantsBy(id, price, query, lat, lon, radius)
+                const list = await restaurantsAPI.getRestaurants(price)
+                context.commit('SET_RESTAURANTS_LIST', list)
             } catch (e) {
                 console.log(e)
             }
         }
     },
     getters: {
-        ETHNICITY(state) {
+        ETHNICITY (state) {
             return state.ethnicity
+        },
+        LETTERS (state) {
+            return state.letters
+        },
+        RESTAURANTS (state) {
+            return state.restaurants
         }
     }
 }

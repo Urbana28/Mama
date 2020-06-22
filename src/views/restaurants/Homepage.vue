@@ -11,9 +11,9 @@
                             <div class="pic"><img src="../../img/globe.png" alt=""></div>
                             <button class="btn">View All</button>
                         </div>
-                        <router-link to="/filtered" v-if="selectedEthnicity === null" v-for="e in ethnicity" v-bind:key="e.id"
+                        <router-link to="/filtered" v-if="selectedEthnicity === null" v-for="e in ETHNICITY" v-bind:key="e.id"
                              v-on:click.native="onClickHandler(e.id, e.name)" class="group">
-                            <div :id="e.id" class="flag-pic"><img :src="e.img" alt=""></div>
+                            <div :id="e.id" class="flag-pic"><img :src="e.flag" alt=""></div>
                                 <button class="btn-ethn">{{e.name}}</button>
                         </router-link>
                     </div>
@@ -21,22 +21,23 @@
                         <div class="span-price">
                             Price
                         </div>
-                        <button v-on:click="selectPrice('$')" >$</button>
-                        <button v-on:click="selectPrice('$$')" >$$</button>
-                        <button v-on:click="selectPrice('$$$')" >$$$</button>
-                        <button v-on:click="selectPrice('$$$$')" >$$$$</button>
+                        <button ref="lowPrice" v-on:click="selectPrice(1)" >$</button>
+                        <button v-on:click="selectPrice(2)" >$$</button>
+                        <button v-on:click="selectPrice(3)" >$$$</button>
+                        <button v-on:click="selectPrice(4)" >$$$$</button>
                     </div>
                 </div>
-                <div v-if="restaurantsByPrice === null" class="restaurants">
-                    <div v-for="r in restaurants">
+                <div class="restaurants">
+                    <!--<div v-for="r in RESTAURANTS" :key="r.id">
                         <RestaurantList :restaurant="r" />
-                    </div>
+                    </div>-->
+                    {{RESTAURANTS}}
                 </div>
-                <div v-if="restaurantsByPrice !== null" class="restaurants">
+                <!--<div v-if="restaurantsByPrice !== null" class="restaurants">
                     <div v-for="r in restaurantsByPrice">
                         <RestaurantList :restaurant="r" />
                     </div>
-                </div>
+                </div>-->
                 <div class="map">
                     <Map/>
                 </div>
@@ -47,7 +48,7 @@
 
 <script>
     import HeaderSearch from "../../components/headers/HeaderSearch";
-    import {mapActions, mapState} from "vuex";
+    import {mapGetters, mapState} from "vuex";
     import RestaurantList from "../../components/restaurant/RestaurantList";
     import Map from "../../components/map/Map";
 
@@ -56,15 +57,13 @@
 
         computed: {
             ...mapState("restaurantsModule", {
-                ethnicity: state => state.ethnicity,
-                selectedEthnicity: state => state.selectedEthnicity,
-                restaurants: state => state.restaurants,
-                restaurantsByPrice: state => state.restaurantsByPrice
-            })
+                selectedEthnicity: state => state.selectedEthnicity
+            }),
+            ...mapGetters('restaurantsModule', ['ETHNICITY', 'RESTAURANTS'])
         },
         methods: {
-            selectPrice (value) {
-               return this.$store.commit('restaurantsModule/selectPriceCategory', value)
+            selectPrice (price) {
+               return this.$store.dispatch('restaurantsModule/getRestaurantsList', price)
             },
             selectEthnicity(value) {
                 return this.$store.commit('restaurantsModule/selectEthnicity', value)
@@ -76,6 +75,11 @@
             onClickHandler (value1,value2) {
                 this.setRestaurantsByEthnicity(value2)
             }
+        },
+        mounted () {
+            this.$store.dispatch('restaurantsModule/getEthnicityList')
+            this.$store.dispatch('restaurantsModule/getRestaurantsList')
+            this.$refs['lowPrice'].focus()
         }
     }
 </script>
@@ -104,7 +108,6 @@
 
                 .choice {
                     width: 203px;
-                    height: 452px;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
@@ -112,7 +115,8 @@
                     &--ethnicity {
                         display: flex;
                         flex-direction: column;
-
+                        height: 247px;
+                        overflow: auto;
                         margin-top: 35px;
                         padding-left: 10px;
 
@@ -158,7 +162,7 @@
                                     cursor: pointer;
                                     background: #ffcc00;
                                     border-radius: 5px;
-                                    box-shadow: 0px 10px 114px 0 rgba(0, 0, 0, 0.05);
+                                    box-shadow: 0 10px 114px 0 rgba(0, 0, 0, 0.05);
                                     transition: .3s;
                                 }
                             }
@@ -215,14 +219,14 @@
                                 color: #ff3c00;
                                 transition: .3s;
                                 border-radius: 4px;
-                                box-shadow: 0px 10px 114px 0 rgba(0, 0, 0, 0.05);
+                                box-shadow: 0 10px 114px 0 rgba(0, 0, 0, 0.05);
                             }
 
                             &:active, &:focus {
                                 background: #ffcc00;
                                 color: #ff3c00;
                                 transition: .3s;
-                                box-shadow: 0px 10px 114px 0 rgba(0, 0, 0, 0.05);
+                                box-shadow: 0 10px 114px 0 rgba(0, 0, 0, 0.05);
                                 border-radius: 4px;
                             }
                         }
