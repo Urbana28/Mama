@@ -42,39 +42,38 @@
                     </div>
                     <div class="timetable">Open – Closes 9:30pm</div>
                 </div>
-                <div class="slider">
-                   <!-- <carousel class="custom-style" autoplay="true" :scrollPerPage="true" perPage="1" paginationActiveColor="#ffcc00" paginationColor='#ffcc00'>
-                        <slide>
-                            <img src="../../img/dish.png" alt="">
-                        </slide>
-                        <slide>
-                            <img src="../../img/dish.png" alt="">
-                        </slide>
-                        <slide>
-                            <img src="../../img/dish.png" alt="">
-                        </slide>
-                    </carousel>-->
-
+                <div class="buttons">
+                    <div class="button-first-group">
+                        <div class="btn">
+                            <div class="iconPhone">
+                                <img src="../../img/phone.png" alt="">
+                            </div>
+                            <OutlineButton name="Call"/>
+                        </div>
+                        <div class="btn">
+                            <div class="icon">
+                                <img src="../../img/plate.png" alt="">
+                            </div>
+                            <OutlineButton name="Online"/>
+                        </div>
+                    </div>
+                    <div class="button-second-group">
+                        <Button name="Give Recommendation" color='#fecc2f'/>
+                    </div>
                 </div>
             </div>
-            <div class="buttons">
-                <div class="button-first-group">
-                    <div class="btn">
-                        <div class="iconPhone">
-                            <img src="../../img/phone.png" alt="">
-                        </div>
-                        <OutlineButton name="Call"/>
-                    </div>
-                    <div class="btn">
-                        <div class="icon">
-                            <img src="../../img/plate.png" alt="">
-                        </div>
-                        <OutlineButton name="Online"/>
-                    </div>
-                </div>
-                <div class="button-second-group">
-                    <Button name="Give Recommendation" color='#fecc2f'/>
-                </div>
+            <div class="slider">
+                <carousel class="custom-style" autoplay="true" :scrollPerPage="true" perPage="1" paginationActiveColor="#ffcc00" paginationColor='#ffcc00'>
+                    <slide>
+                        <img src="../../img/dish.png" alt="">
+                    </slide>
+                    <slide>
+                        <img src="../../img/dish.png" alt="">
+                    </slide>
+                    <slide>
+                        <img src="../../img/dish.png" alt="">
+                    </slide>
+                </carousel>
             </div>
         </div>
     </div>
@@ -84,10 +83,8 @@
     import Button from "../../components/button/Button";
     import OutlineButton from "../../components/button/OutlineButton";
     import HeaderSearch from "../../components/headers/HeaderSearch";
-    import {Carousel, Slide} from 'vue-carousel';
+    import { Carousel, Slide} from 'vue-carousel';
     import BackArrow from "../../components/button/BackArrow";
-    import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-    import 'swiper/css/swiper.css'
 
     export default {
         name: 'BusinessDetail',
@@ -121,11 +118,11 @@
 
         .content {
             position: relative;
-            margin: 19px auto;
+            margin: 45px auto;
             flex-grow: 1;
             display: flex;
-            flex-direction: column;
             width: 100%;
+            justify-content: center;
 
             .backArrow {
                 display: none;
@@ -134,6 +131,18 @@
                     display: block;
                     position: absolute;
                     top: 18px;
+                    left: -2px;
+
+                    button {
+                        background: none;
+                        outline: none;
+                        border: none;
+                    }
+                }
+                @media screen and (max-width: 375px){
+                    display: block;
+                    position: absolute;
+                    top: 30px;
                     left: -2px;
 
                     button {
@@ -167,17 +176,33 @@
                         }
                     }
                 }
+                @media screen and (max-width: 375px){
+                    display: flex;
+                    position: absolute;
+                    top: 30px;
+                    right: 40px;
+
+                    .bookmark {
+                        margin-left: 20px;
+                        button {
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
             }
 
             .info {
                 display: flex;
-                justify-content: center;
+            flex-direction: column;
 
                 &--titles {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
                     margin-right: 70px;
+                    margin-bottom: 100px;
 
                     .name {
                         font-family: 'Lato', sans-serif;
@@ -276,17 +301,42 @@
                     }
 
                 }
+                .buttons {
+                    display: flex;
+                    flex-direction: column;
 
-                .slider {
-                    width: 341px;
-                    position: relative;
+                    .button-first-group {
+                        display: flex;
+                        text-align: center;
+                        margin-bottom: 14px;
 
-                    img {
-                        width: 100%;
-                        height: 279px;
-                        border-radius: 5px;
+
+                        .btn {
+                            width: 118px;
+                            position: relative;
+                            margin-right: 9px;
+
+                            .iconPhone {
+                                img {
+                                    position: absolute;
+                                    top: 8.5px;
+                                    left: 34px;
+                                }
+                            }
+
+                            .icon {
+                                img {
+                                    position: absolute;
+                                    top: 8.5px;
+                                    left: 24px;
+                                }
+                            }
+                        }
                     }
 
+                    .button-second-group {
+                        width: 244px;
+                    }
                 }
 
                 @media screen and (max-width: 414px) {
@@ -295,7 +345,7 @@
                     margin-top: 50px;
 
                     &--titles {
-                        margin-bottom: 17px;
+                        margin-bottom: 0;
                         margin-right: 0;
 
                         .name {
@@ -353,8 +403,38 @@
                         }
                     }
 
-                    .slider {
-                        display: none;
+                    .buttons {
+                        margin-top: 20px;
+                        margin-left: 0;
+
+                        .button-first-group {
+                            justify-content: space-between;
+                            .btn {
+                                width: 156px;
+                                text-align: center;
+                                margin-right: 0;
+
+                                .iconPhone {
+                                    img {
+                                        width: 18px;
+                                        height: 14px;
+                                        top: 10.5px;
+                                    }
+                                }
+
+                                .icon {
+                                    img {
+                                        width: 18px;
+                                        height: 14px;
+                                        top: 10.5px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .button-second-group {
+                            width: 332px;
+                        }
                     }
                 }
 
@@ -383,102 +463,65 @@
                             }
                         }
                     }
+
+                    .buttons {
+                        .button-first-group {
+                            margin-bottom: 10px;
+                        }
+                    }
                 }
 
                 @media screen and (max-width: 320px){
 
                     &--titles {
                         .mobileSlider {
+                            width: 320px;
                             img {
                                 width: 304px;
                                 height: 225px;
                             }
                         }
                     }
-                }
-            }
 
-            .buttons {
-                display: flex;
-                flex-direction: column;
-                margin-top: -148px;
-                margin-left: 139px;
+                    .buttons {
 
-                .button-first-group {
-                    display: flex;
-                    text-align: center;
-                    margin-bottom: 14px;
-
-
-                    .btn {
-                        width: 118px;
-                        position: relative;
-                        margin-right: 9px;
-
-                        .iconPhone {
-                            img {
-                                position: absolute;
-                                top: 8.5px;
-                                left: 34px;
+                        .button-first-group {
+                            width: 300px;
+                            .btn {
+                                width: 140px;
                             }
                         }
-
-                        .icon {
-                            img {
-                                position: absolute;
-                                top: 8.5px;
-                                left: 24px;
-                            }
+                        .button-second-group {
+                            width: 300px;
                         }
                     }
                 }
+            }
 
-                .button-second-group {
-                    width: 244px;
+            .slider {
+                width: 336px;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    height: 279px;
+                    border-radius: 5px;
                 }
 
                 @media screen and (max-width: 414px) {
-                    margin-top: 20px;
-                    margin-left: 0px;
-
-                    .button-first-group {
-                        justify-content: space-between;
-                        .btn {
-                            width: 156px;
-                            text-align: center;
-                            margin-right: 0;
-
-                            .iconPhone {
-                                img {
-                                    width: 18px;
-                                    height: 14px;
-                                    top: 10.5px;
-                                }
-                            }
-
-                            .icon {
-                                img {
-                                    width: 18px;
-                                    height: 14px;
-                                    top: 10.5px;
-                                }
-                            }
-                        }
-                    }
-
-                    .button-second-group {
-                        width: 332px;
-                    }
-                }
-
-                @media screen and (max-width: 376px){
-                    .button-first-group {
-                        margin-bottom: 10px;
-                    }
+                    display: none;
                 }
             }
+
             @media screen and (max-width: 414px){
                 align-items: center;
+                flex-direction: column;
+                margin-top: 8px;
+            }
+            @media screen and (max-width: 375px){
+                align-items: center;
+                flex-direction: column;
+                margin: 0;
             }
         }
         @media screen and (max-width: 414px){

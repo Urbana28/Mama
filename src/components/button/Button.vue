@@ -60,7 +60,7 @@
             }
 
             @media screen and (max-width: 414px){
-                height: 38px;
+                height: 33px;
                 font-size: 17px;
                 line-height: 17px;
             }

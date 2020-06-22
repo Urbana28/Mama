@@ -19,48 +19,11 @@
                     most identify with?
                 </div>
                 <div class="ethnicity">
-                    <div class="ethnicity--lang" >
-                        <div class="cuisine">
-                            <div class="flag"><img src="../../img/japan.png" alt=""></div>
-                            <div class="name">Ethnicity 1</div>
+                    <div class="ethnicity--lang">
+                        <div v-for="e in ETHNICITY" class="cuisine" :id="e.id">
+                            <div class="flag"><img :src="e.flag" alt=""></div>
+                            <div class="name">{{e.name}}</div>
                         </div>
-                        <div class="cuisine">
-                            <div class="flag"><img src="../../img/japan.png" alt=""></div>
-                            <div class="name">Ethnicity 1</div>
-                        </div>
-                        <div class="cuisine">
-                            <div class="flag"><img src="../../img/japan.png" alt=""></div>
-                            <div class="name">Ethnicity 1</div>
-                        </div>
-                        <div class="cuisine">
-                            <div class="flag"><img src="../../img/japan.png" alt=""></div>
-                            <div class="name">Ethnicity 1</div>
-                        </div>
-                        <div class="cuisine">
-                            <div class="flag"><img src="../../img/japan.png" alt=""></div>
-                            <div class="name">Ethnicity 1</div>
-                        </div>
-                        <div class="cuisine">
-                            <div class="flag"><img src="../../img/japan.png" alt=""></div>
-                            <div class="name">Ethnicity 1</div>
-                        </div>
-                        <div class="cuisine">
-                            <div class="flag"><img src="../../img/japan.png" alt=""></div>
-                            <div class="name">Ethnicity 1</div>
-                        </div>
-                        <div class="cuisine">
-                            <div class="flag"><img src="../../img/japan.png" alt=""></div>
-                            <div class="name">Ethnicity 1</div>
-                        </div>
-                        <div class="cuisine">
-                            <div class="flag"><img src="../../img/japan.png" alt=""></div>
-                            <div class="name">Ethnicity 1</div>
-                        </div>
-                        <div class="cuisine">
-                            <div class="flag"><img src="../../img/japan.png" alt=""></div>
-                            <div class="name">Ethnicity 1</div>
-                        </div>
-
                     </div>
                     <div class="ethnicity--alph">
                         <div class="letter">A</div>

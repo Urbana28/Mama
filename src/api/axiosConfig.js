@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://737a181d18ff.ngrok.io',
+    baseURL: 'http://192.168.1.76:8000/',
     headers: {
         'Content-Type': 'application/json',
     }

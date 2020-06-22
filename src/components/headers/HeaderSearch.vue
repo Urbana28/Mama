@@ -92,7 +92,7 @@
                 img{
                     position: absolute;
                     top: 8px;
-                    left: 517px;
+                    left: 505px;
                 }
             }
         }
