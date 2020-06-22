@@ -21,8 +21,17 @@
                 <div class="ethnicity">
                     <div v-if="ethnicityByLetter === null" class="ethnicity--lang">
                         <div v-on:click="selectEthnicity(e.id)" v-for="e in ETHNICITY" class="cuisine" :id="e.id">
-                            <div class="flag"><img :src="e.flag" alt=""></div>
+                            <div class="flag">
+                                <img :src="e.flag" alt="">
+                            </div>
                             <div class="name">{{e.name}}</div>
+                        </div>
+                        <div class="notSure">
+                            <div class="flag">
+                                <img src="../../img/not-sure.png" alt="">
+                                <div class="icon">?</div>
+                            </div>
+                            <div class="span"> I'm not sure</div>
                         </div>
                     </div>
                     <div v-else-if="ethnicityByLetter !== null" class="ethnicity--lang">
@@ -33,6 +42,7 @@
                     </div>
                     <div class="ethnicity--alph">
                         <div v-on:click="setEthnicityByLetter(l)" v-for="l in LETTERS" :key="l" class="letter">{{l}}</div>
+                        <div class="icon">?</div>
                     </div>
                 </div>
                 <div class="btn">
@@ -74,7 +84,6 @@
                return console.log(id)
             },
             setEthnicityByLetter (value) {
-                debugger
                 return this.ethnicityByLetter = this.ETHNICITY.filter( (e) => e.name.charAt(0) === value)
             }
         },
@@ -158,8 +167,8 @@
                 }
 
                 @media screen and (max-width: 320px) {
-                    top: 60px;
-                    left: -10px;
+                    top: 50px;
+                    left: -14px;
                 }
             }
 
@@ -178,13 +187,12 @@
                 .ethnicity {
                     display: flex;
                     height: 259px;
-
+                    position: relative;
 
                     ::-webkit-scrollbar { /* chrome based */
                         width: 0; /* ширина scrollbar'a */
                         background: transparent; /* опционально */
                     }
-
                     -ms-overflow-style: none; /* IE 10+ */
                     scrollbar-width: none; /* Firefox */
 
@@ -197,6 +205,34 @@
                         line-height: 51.5px;
                         color: #ffcc00;
                         margin-right: 60px;
+
+                        .notSure {
+                            display: flex;
+                            position: absolute;
+                            left: 2px;
+                            bottom: -50px;
+
+                            .flag {
+                                position: relative;
+                                img {
+                                    width: 40px;
+                                    height: 25px;
+                                }
+
+                                .icon {
+                                    position: absolute;
+                                    top: -7px;
+                                    left: 15px;
+                                }
+                            }
+
+                            .span {
+                                position: absolute;
+                                width: 100px;
+                                left: 56px;
+                                top: -6px;
+                            }
+                        }
 
                         .cuisine {
                             display: flex;
@@ -224,20 +260,34 @@
                         color: #ffcc00;
                         margin-left: 60px;
 
+                        .icon {
+                            position: absolute;
+                            bottom: -27px;
+                            font-size: 12px;
+                        }
+
                         .letter {
+                            &:focus, &:active, &:hover {
+                                cursor: pointer
+                            }
                         }
                     }
 
                     @media screen and (max-width: 414px) {
                         height: 460px;
-                        margin-bottom: 35px;
+                        margin-bottom: 55px;
 
 
                         &--lang {
                             font-size: 15.68px;
-                            line-height: 59.72px;
+                            line-height: 58.72px;
                             margin-right: 10px;
                             margin-left: 30px;
+
+                            .notSure {
+                                left: 31px;
+                                bottom: -55px;
+                            }
                         }
                         &--alph {
                             font-size: 12.01px;
@@ -247,24 +297,36 @@
                     }
                     @media screen and (max-width: 376px) {
                         height: 440px;
-                        margin-bottom: 25px;
+                        margin-bottom: 50px;
                         &--lang {
                             font-size: 13px;
                             line-height: 49.72px;
                             margin-right: 40px;
                             margin-left: 23px;
+
+                            .notSure {
+                                left: 24px;
+
+                                .span {
+                                    left: 49px;
+                                    top: -8px;
+                                }
+                            }
                         }
                         &--alph {
                             font-size: 12.5px;
                             line-height: 24.35px;
                             margin-left: 85px;
+
+                            .icon {
+                                bottom: -34px;
+                            }
                         }
                     }
 
                     @media screen and (max-width: 360px) {
                         height: 365px;
-                        margin-bottom: 25px;
-
+                        margin-bottom: 47px;
 
                         &--lang {
                             font-size: 15px;
@@ -272,24 +334,38 @@
                             line-height: 50.72px;
                             margin-right: 30px;
                             margin-left: 40px;
+
+                            .notSure {
+                                left: 42px;
+                                bottom: -42px;
+
+                            }
                         }
                         &--alph {
                             font-size: 12.01px;
                             line-height: 18.35px;
                             margin-left: 85px;
+
+                            .icon {
+                                bottom: -18px
+                            }
                         }
                     }
 
 
                     @media screen and (max-width: 320px) {
-                        height: 318px;
-                        margin-bottom: 17px;
+                        height: 317px;
+                        margin-bottom: 41px;
 
                         &--lang {
                             font-size: 13.68px;
-                            line-height: 46.72px;
+                            line-height: 45.72px;
                             margin-right: 0;
-                            margin-left: 38px;
+                            margin-left: 23px;
+
+                            .notSure {
+                                left: 25px;
+                            }
                         }
                         &--alph {
                             font-size: 9.5px;
@@ -300,7 +376,7 @@
                 }
 
                 .btn {
-                    margin-top: 23px;
+                    margin-top: 50px;
 
                     button {
 
