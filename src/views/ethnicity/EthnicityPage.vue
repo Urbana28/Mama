@@ -19,7 +19,7 @@
                     most identify with?
                 </div>
                 <div class="ethnicity">
-                    <div class="ethnicity--lang">
+                    <div class="ethnicity--lang" >
                         <div class="cuisine">
                             <div class="flag"><img src="../../img/japan.png" alt=""></div>
                             <div class="name">Ethnicity 1</div>
@@ -114,12 +114,10 @@
         methods: {
             setIsOpen(value) {
                 return this.isPopupOpen = value
-            },
-            ...mapActions('restaurantsModule',
-                ['SET_ETHNICITY_LIST'])
+            }
         },
         mounted () {
-            this.SET_ETHNICITY_LIST()
+            this.$store.dispatch('restaurantsModule/getEthnicityList')
         }
     }
 </script>

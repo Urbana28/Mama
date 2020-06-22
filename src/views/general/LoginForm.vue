@@ -63,8 +63,7 @@
     import Button from "../../components/button/Button";
     import {email, required} from 'vuelidate/lib/validators'
     import ForgotPopup from "../../components/popup/ForgotPopup";
-    import {authModule} from "../../store/authModule";
-    import {mapActions} from "vuex";
+
 
 
     export default {

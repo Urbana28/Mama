@@ -1,11 +1,8 @@
-import axios from 'axios';
+import instance from './axiosConfig'
 
-const instance = axios.create({
-    baseURL: 'http://192.168.1.76:8000/'
-})
 
 export const restaurantsAPI = {
     getEthnicity () {
-        return instance.get('api/v1/ethnicity')
+        return instance.get('api/v1/ethnicity/')
     }
 }

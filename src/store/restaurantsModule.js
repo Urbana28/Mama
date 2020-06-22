@@ -33,7 +33,8 @@ export const restaurantsModule = {
                 place: ' Hainan ', distance: '1.2mi', priceCategory: '$$'}
         ],
         restaurantsByPrice: null,
-        restaurantsByEthnicity : null
+        restaurantsByEthnicity : null,
+        searchedRestaurants : null
     },
     mutations: {
         SET_ETHNICITY: (state, ethnicityList) => {
@@ -47,12 +48,19 @@ export const restaurantsModule = {
         },
         setRestaurantsByEthnicity (state, value) {
             state.restaurantsByEthnicity = state.restaurants.filter(r => r.ethnicity === value)
+        },
+        searchRestaurant (state, value) {
+            state.searchedRestaurants = state.restaurants.filter(r => r.name.toLowerCase().indexOf(value.toLowerCase()) > -1)
         }
     },
     actions: {
-        async SET_ETHNICITY_LIST (context) {
-            const ethnicity = await restaurantsAPI.getEthnicity() //res.data.ethnicityList??
-            context.commit('SET_ETHNICITY', ethnicity.data)
+        async getEthnicityList (context) {
+             try {const response = await restaurantsAPI.getEthnicity() //res.data.ethnicityList??
+            console.log(response) }
+            catch (e) {
+                 console.log(e)
+            }
+            /*context.commit('SET_ETHNICITY', ethnicity.data)*/
         }
     },
     getters : {

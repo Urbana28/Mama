@@ -43,7 +43,7 @@
                     <div class="timetable">Open – Closes 9:30pm</div>
                 </div>
                 <div class="slider">
-                    <carousel autoplay="true" :scrollPerPage="true" perPage="1" paginationActiveColor="#ffcc00" paginationColor='#ffcc00'>
+                   <!-- <carousel class="custom-style" autoplay="true" :scrollPerPage="true" perPage="1" paginationActiveColor="#ffcc00" paginationColor='#ffcc00'>
                         <slide>
                             <img src="../../img/dish.png" alt="">
                         </slide>
@@ -53,7 +53,8 @@
                         <slide>
                             <img src="../../img/dish.png" alt="">
                         </slide>
-                    </carousel>
+                    </carousel>-->
+
                 </div>
             </div>
             <div class="buttons">
@@ -85,10 +86,22 @@
     import HeaderSearch from "../../components/headers/HeaderSearch";
     import {Carousel, Slide} from 'vue-carousel';
     import BackArrow from "../../components/button/BackArrow";
+    import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+    import 'swiper/css/swiper.css'
 
     export default {
         name: 'BusinessDetail',
         components: {BackArrow, HeaderSearch, OutlineButton, Button, Carousel, Slide},
+        data () {
+            return {
+                swiperOption: {
+                    pagination: {
+                        el: '.swiper-pagination',
+                        type: 'bullets'
+                    }
+                }
+            }
+        },
         props: {
             dotStyle: {
                 background: 'none',
@@ -99,6 +112,7 @@
 </script>
 
 <style scoped lang="scss">
+
     .business-container {
         width: 100%;
         display: flex;
@@ -265,12 +279,14 @@
 
                 .slider {
                     width: 341px;
+                    position: relative;
 
                     img {
                         width: 100%;
                         height: 279px;
                         border-radius: 5px;
                     }
+
                 }
 
                 @media screen and (max-width: 414px) {

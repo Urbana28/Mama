@@ -116,11 +116,27 @@ Vue.use(VueRouter)
     },
     {
       path: '/homepage',
-      name: 'Homepage',
+      name: 'HomepageContainer',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '../views/restaurants/Homepage')
+      component: () => import(/* webpackChunkName: "about" */ '../views/restaurants/HomepageContainer')
+    },
+    {
+      path: '/map',
+      name: 'MapMobile',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ '../views/restaurants/MapMobile')
+    },
+    {
+      path: '/listMobile',
+      name: 'ListMobile',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "about" */ '../views/restaurants/ListMobile')
     },
     {
       path: '/ethnicity',

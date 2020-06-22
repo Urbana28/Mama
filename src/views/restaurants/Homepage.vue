@@ -246,11 +246,6 @@
                 .map {
                     width: 216px;
                     height: 452px;
-
-                    @media screen and (max-width: 414px){
-                        display: none;
-                    }
-
                 }
             }
         }
