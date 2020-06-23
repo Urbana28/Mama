@@ -24,8 +24,10 @@
                                 <img src="../../img/email.png" alt="">
                             </div>
                         </div>
-                        <small class="invalidMessage" v-if="$v.email.$dirty && !$v.email.required">Field is required</small>
-                        <small class="invalidMessage" v-else-if="$v.email.$dirty && !$v.email.email">Incorrect email</small>
+                        <small class="invalidMessage" v-if="$v.email.$dirty && !$v.email.required">Field is
+                            required</small>
+                        <small class="invalidMessage" v-else-if="$v.email.$dirty && !$v.email.email">Incorrect
+                            email</small>
 
                         <div class="input-wrapper">
                             <input v-model.trim="password"
@@ -40,7 +42,8 @@
                     </div>
 
                     <div class="button">
-                        <Button type="submit" name="Login"/>
+                        <!--<Button type="submit" name="Login"/>-->
+                        <button type="submit">Login</button>
                     </div>
                 </form>
 
@@ -63,7 +66,6 @@
     import Button from "../../components/button/Button";
     import {email, required} from 'vuelidate/lib/validators'
     import ForgotPopup from "../../components/popup/ForgotPopup";
-
 
 
     export default {
@@ -93,7 +95,7 @@
                     password: this.password
                 }
                 console.log(formData)
-                this.$store.dispatch('loginUser',{
+                this.$store.dispatch('loginUser', {
                     email: this.email,
                     password: this.password
                 })
@@ -123,6 +125,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
+
             .logo {
                 position: absolute;
                 top: 52px;
@@ -178,28 +181,28 @@
                         left: 327px;
                     }
 
-                    @media screen and (max-width: 414px){
+                    @media screen and (max-width: 414px) {
                         .forgot {
                             top: 234px;
                             left: 54px;
                         }
                     }
 
-                    @media screen and (max-width: 375px){
+                    @media screen and (max-width: 375px) {
                         .forgot {
                             top: 241px;
                             left: 25px;
                         }
                     }
 
-                    @media screen and (max-width: 360px){
+                    @media screen and (max-width: 360px) {
                         .forgot {
                             top: 219px;
                             left: 17px;
                         }
                     }
 
-                    @media screen and (max-width: 320px){
+                    @media screen and (max-width: 320px) {
                         .forgot {
                             top: 170px;
                             left: 7px;
@@ -291,6 +294,45 @@
                     margin-top: 34px;
                     width: 303px;
 
+                    button {
+                        font-family: "Montserrat", sans-serif;
+                        font-weight: 400;
+                        font-size: 13px;
+                        height: 30px;
+                        width: 100%;
+                        outline: none;
+                        border: none;
+                        border-radius: 30px;
+                        background: #ffcc00;
+                        transition: .3s;
+                        color: #fd3c1d;
+
+                        &:active, &:focus {
+                            transition: .3s;
+                            background-color: #fd3c1d;
+                            color: #ffd800;
+                        }
+
+                        &:hover {
+                            transition: .3s;
+                            cursor: pointer;
+                            background-color: #fd3c1d !important;
+                            color: #ffd800;
+                        }
+
+                        @media screen and (max-width: 414px) {
+                            height: 33px;
+                            font-size: 17px;
+                            line-height: 17px;
+                        }
+
+                        @media screen and (max-width: 320px) {
+                            height: 33px;
+                            font-size: 15px;
+                            line-height: 15px;
+                        }
+                    }
+
                     @media screen and (max-width: 320px) {
                         width: 265px;
                     }
@@ -304,6 +346,7 @@
 
                     .link {
                         text-align: center;
+
                         a {
                             font-family: "Montserrat", sans-serif;
                             font-size: 12.5px;
@@ -332,7 +375,7 @@
                         }
                     }
 
-                    @media screen and (max-width: 414px){
+                    @media screen and (max-width: 414px) {
                         margin-top: 15px;
 
                         .link {
@@ -347,7 +390,7 @@
                         }
                     }
 
-                    @media screen and (max-width: 320px){
+                    @media screen and (max-width: 320px) {
                         margin-top: 15px;
 
                         .link {
