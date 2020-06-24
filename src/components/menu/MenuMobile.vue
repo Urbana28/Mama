@@ -1,19 +1,21 @@
 <template>
     <div class="menu-container">
-        <router-link to="/listMobile" class="btn">
-            <img class="first-list" src="../../img/list-button.png" alt="">
-            <img class="second-list" src="../../img/list-button-active.png" alt="">
-            <span>The List</span>
-        </router-link>
-        <router-link to="/map" class="btn">
-            <img class="first" src="../../img/map-button.png" alt="">
-            <img class="second" src="../../img/map-button-active.png" alt="">
-            Map
-        </router-link>
-        <button v-on:click="callback(true)" v-on:blur="callback(false)" class="btn">
-            <img class="first" src="../../img/menu-button.png" alt="">
-            <img class="second" src="../../img/menu-button-active.png" alt="">
-        </button>
+        <div class="content">
+            <router-link  to="/listMobile" class="btn">
+                <img class="first-list" src="../../img/list-button.png" alt="">
+                <img class="second-list" src="../../img/list-button-active.png" alt="">
+                <span>The List</span>
+            </router-link>
+            <router-link  to="/map" class="btn">
+                <img class="first" src="../../img/map-button.png" alt="">
+                <img class="second" src="../../img/map-button-active.png" alt="">
+                Map
+            </router-link>
+            <button v-on:click="callback(true)" v-on:blur="callback(false)" class="btn btn-menu">
+                <img class="first" src="../../img/menu-button.png" alt="">
+                <img class="second" src="../../img/menu-button-active.png" alt="">
+            </button>
+        </div>
     </div>
 </template>
 
@@ -29,10 +31,19 @@
 <style scoped lang="scss">
     .menu-container {
         background: white;
-        height: 73px;
+        height: 70px;
+        max-width: 414px;
         width: 100%;
         display: flex;
         align-items: center;
+        justify-content: center;
+
+        .content {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-around;
+        }
 
         .btn {
             outline: none;
@@ -45,7 +56,11 @@
             color: rgba(139, 153, 189, .9);
             text-shadow: rgba(139, 153, 189, .9) 0 0 1px;
             padding-top: 34px;
-            margin: 0 48px;
+
+
+            .btn-menu {
+                padding-right: 30px;
+            }
 
             .first {
                 position: absolute;

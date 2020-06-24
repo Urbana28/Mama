@@ -5,8 +5,8 @@
             <div class="info">
                 <div class="name">{{restaurant.name}}</div>
                 <div class="place">
-                    <div class="category">$$</div>
-                    <div class="ethnicity">{{restaurant.ethnicity + ','}}</div>
+                    <div class="category">{{restaurant.price}}</div>
+                    <div class="ethnicity">{{restaurant.ethnicity}}</div>
                     <div class="placeName">{{restaurant.address.city}}</div>
                 </div>
             </div>
@@ -21,12 +21,12 @@
         props: {
             restaurant: {
                 id: Number,
-                img: String,
+                /*img: String,*/
                 name: String,
-                priceCategory: String,
+                price: Number,
                 ethnicity: String,
-                place: String,
-                distance: String
+                address: Object,
+                /*distance: String*/
             }
         }
     }
@@ -84,7 +84,10 @@
                     color: #222455;
 
                     .category {
-                        margin-right: 3px;
+                        margin-right: 10px;
+                    }
+                    .ethnicity {
+                        margin-right: 5px;
                     }
                 }
             }

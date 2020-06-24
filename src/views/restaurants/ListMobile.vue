@@ -1,6 +1,5 @@
 <template>
     <div class="list-container">
-        <transition mode="out-in">
             <div v-if="isMenuOpen" class="menu">
                 <div class="menu--title">More</div>
                 <div class="menu--nav">
@@ -26,26 +25,23 @@
                     </ul>
                 </div>
             </div>
-            <div v-if="!isMenuOpen" class="content">
+            <div class="filter-menu" v-if="isFilterOpen">
+                <FilterMenu :filterHandler="openFilter"/>
+            </div>
+            <div v-if="!isMenuOpen && !isFilterOpen" class="content">
                 <div class="logo">
                     <img src="../../img/logo-mob.png" alt="">
                 </div>
                 <div class="search">
-                    <SearchMobile :callback="searchRestaurant"/>
+                    <SearchMobile :filterHandler="openFilter" :callback="searchByName"/>
                 </div>
-                <div v-if="searchedRestaurants == null" class="list">
-                    <div v-for="r in restaurants" class="restaurant">
-                        <RestaurantList :restaurant="r"/>
-                    </div>
-                </div>
-                <div v-if="searchedRestaurants != null" class="list">
-                    <div v-for="r in searchedRestaurants" class="restaurant">
+                <div class="list">
+                    <div v-for="r in RESTAURANTS" class="restaurant">
                         <RestaurantList :restaurant="r"/>
                     </div>
                 </div>
             </div>
-        </transition>
-        <div class="footer-bar">
+        <div v-if="!isFilterOpen" class="footer-bar">
             <MenuMobile :callback="openMenu"/>
         </div>
     </div>
@@ -55,28 +51,36 @@
     import MenuMobile from "../../components/menu/MenuMobile";
     import Input from "../../components/input/Input";
     import SearchMobile from "../../components/headers/SearchMobile";
-    import {mapMutations, mapState} from "vuex";
+    import {mapGetters} from "vuex";
     import RestaurantList from "../../components/restaurant/RestaurantList";
+    import {createParameters} from "../../helpers/createParameters";
+    import FilterMenu from "../../components/filters/FilterMenu";
 
     export default {
         name: 'ListMobile',
-        components: {RestaurantList, SearchMobile, Input, MenuMobile},
+        components: {RestaurantList, SearchMobile, Input, MenuMobile, FilterMenu},
         data() {
             return {
-                isMenuOpen: false
+                isMenuOpen: false,
+                isFilterOpen: false
             }
         },
         methods: {
             openMenu(value) {
                 this.isMenuOpen = value
             },
-            ...mapMutations('restaurantsModule', ['searchRestaurant'])
+            openFilter (value) {
+               this.isFilterOpen = value
+            },
+            searchByName (q) {
+                return this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters('', '', q))
+            }
         },
         computed: {
-            ...mapState('restaurantsModule', {
-                restaurants: state => state.restaurants,
-                searchedRestaurants: state => state.searchedRestaurants
-            })
+            ...mapGetters('restaurantsModule', ['ETHNICITY', 'RESTAURANTS'])
+        },
+        mounted() {
+            this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters('', '2'))
         }
     }
 </script>
@@ -85,27 +89,29 @@
     .list-container {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
         flex-grow: 1;
-        background: pink;
-        position: relative;
+        background: #fdfdfd;
         width: 100%;
-        height: 100%;
+        height: 100vh;
 
         .content {
             display: flex;
             flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            flex-grow: 1;
             width: 100%;
-
-            transition: 3s;
+            position: relative;
 
             .search {
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
 
             .logo {
-                margin-top: 40px;
-                margin-bottom: 35px;
-
+                margin-top: 48px;
+                margin-bottom: 15px;
                 img {
                     width: 127px;
                     height: 32px;
@@ -116,8 +122,22 @@
                 width: 326px;
                 height: 460px;
                 overflow: auto;
-                margin: 0 auto 11px;
             }
+
+            @media screen and (max-width: 320px) {
+                .list {
+                    width: 280px;
+                }
+
+                .search {
+                    width: 280px;
+                }
+            }
+        }
+
+        .filter-menu {
+            width: 100%;
+            height: 100%;
         }
 
         .menu {
@@ -193,7 +213,8 @@
             width: 100%;
             left: 0;
             right: 0;
-            top: 90.1%;
+            bottom: 0;
+            top: 101%;
         }
     }
 </style>

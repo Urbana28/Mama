@@ -27,13 +27,13 @@
         </div>
             <div v-else-if="!isMenuOpen" class="content">
             <div class="search">
-                <SearchMobile btnLeft="8px" btnRight="15px"/>
+                <SearchMobile />
             </div>
             <div class="map">
               <Map />
             </div>
             <div class="footer-bar">
-                <MenuMobile :callback="openMapMenu"/>
+                <MenuMobile :ref="map" :callback="openMapMenu"/>
             </div>
 
         </div>
@@ -71,6 +71,8 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
+        width: 100%;
+        height: 100vh;
 
         .menu {
             background: white;
@@ -143,18 +145,26 @@
             display: flex;
             flex-direction: column;
             width: 100%;
+            height: 100%;
             position: relative;
 
             .search {
                 position: absolute;
                 z-index: 45;
-                left: 42px;
+                left:8%;
                 top: 65px;
+
+                @media screen and (max-width: 320px) {
+                    left: 20px;
+                    width: 280px;
+                }
             }
 
             .map {
-                width: 408px;
-                height: 726px;
+                width: 100%;
+                height: 100vh;
+                max-height: 825px;
+                max-width: 564px;
             }
 
             .footer-bar {
@@ -163,7 +173,7 @@
                 width: 100%;
                 left: 0;
                 right: 0;
-                top: 90.5%;
+                top: 97.5%;
             }
         }
     }

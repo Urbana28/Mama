@@ -8,8 +8,10 @@ export const restaurantsAPI = {
     getRestaurants (price= 1) {
         return instance.get(`api/v1/restaurant/${price}`).then(res => res.data)
     },
-    getRestaurantsBy (id='', price = 1, query = '', lat =34.052235, lon=-118.243683, radius = 20) {
-        return instance.get(`api/v1/restaurant/?id=${id}&price=${price}&query=${query}&lat=${lat}&lon=${lon}&radius=${radius}`).then(res => res.data.results)
+    getRestaurantsBy (parameters) {
+        const {ethnicity, price, q, lat, lon, radius} = parameters
+        return instance.get(`api/v1/restaurant/?ethnicity=${ethnicity}&price=${price}&q=${q}&lat=${lat}&lon=${lon}&radius=${radius}`).
+        then(res => res.data.results)
     },
 
 }

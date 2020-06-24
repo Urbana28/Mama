@@ -1,8 +1,8 @@
 <template>
     <div class="search-container">
         <div class="btn-search" :style="{left:btnLeft}"><button><img src="../../img/search.png" alt=""></button></div>
-        <input v-on:change="callback" placeholder="Ask MAMA"/>
-        <div class="btn-filter" :style="{right:btnRight}"><button><img src="../../img/filter-mob.png" alt=""></button></div>
+        <input v-on:change="callback($event.currentTarget.value)" placeholder="Ask MAMA"/>
+        <div class="btn-filter" :style="{right:btnRight}"><button v-on:click="filterHandler(true)"><img src="../../img/filter-mob.png" alt=""></button></div>
     </div>
 </template>
 
@@ -10,15 +10,9 @@
     export default {
         name : 'SearchMobile',
         props: {
-            btnLeft : {
-                type: String,
-                default: "50px"
-            },
-            btnRight : {
-                type: String,
-                default: "50px"
-            },
-            callback : Function
+
+            callback : Function,
+            filterHandler: Function
         }
     }
 </script>
@@ -33,7 +27,7 @@
 
         .btn-search {
             position: absolute;
-            left: 50px;
+            left: 5px;
             button {
                 outline: none;
                 background: none;
@@ -51,7 +45,7 @@
 
         .btn-filter {
             position: absolute;
-            right: 50px;
+            right: 15px;
             button {
                 outline: none;
                 background: none;

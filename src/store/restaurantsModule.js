@@ -33,9 +33,9 @@ export const restaurantsModule = {
                 console.log(e)
             }
         },
-        async getRestaurantsList (context, id, price, query, lat, lon, radius) {
+        async getRestaurantsList (context, queryParameters) {
             try {
-                const list = await restaurantsAPI.getRestaurantsBy(id, price, query, lat, lon, radius)
+                const list = await restaurantsAPI.getRestaurantsBy(queryParameters)
                 console.log(list)
                 /*const list = await restaurantsAPI.getRestaurants(price)*/
                 context.commit('SET_RESTAURANTS_LIST', list)

@@ -1,7 +1,7 @@
 <template>
     <div class="homepage-container">
         <div>
-            <HeaderSearch placeholder="ASK mama" menuRight="70px" iconLeft="781px" width="535px"/>
+            <HeaderSearch :callback="searchByName" placeholder="ASK mama"  width="500px"/>
         </div>
         <div class="content">
             <div class="inner">
@@ -9,22 +9,22 @@
                     <div class="choice--ethnicity">
                         <div class="group">
                             <div class="pic"><img src="../../img/globe.png" alt=""></div>
-                            <button class="btn">View All</button>
+                            <button v-on:click="viewAll" class="btn">View All</button>
                         </div>
-                        <router-link to="#" v-for="e in ETHNICITY" v-bind:key="e.id"
+                        <div  v-for="e in ETHNICITY" v-bind:key="e.id"
                               class="group">
                             <div :id="e.id" class="flag-pic"><img :src="e.flag" alt=""></div>
-                                <button class="btn-ethn">{{e.name}}</button>
-                        </router-link>
+                                <button v-on:click="clickHandler(e.id)" class="btn-ethn">{{e.name}}</button>
+                        </div>
                     </div>
                     <div class="choice--price">
                         <div class="span-price">
                             Price
                         </div>
-                        <button ref="lowPrice" v-on:click="selectPrice(1)" >$</button>
-                        <button v-on:click="selectPrice(2)" >$$</button>
-                        <button v-on:click="selectPrice(3)" >$$$</button>
-                        <button v-on:click="selectPrice(4)" >$$$$</button>
+                        <button v-on:click="selectPrice('1')" >$</button>
+                        <button ref="lowPrice" v-on:click="selectPrice('2')" >$$</button>
+                        <button v-on:click="selectPrice('3')" >$$$</button>
+                        <button v-on:click="selectPrice('4')" >$$$$</button>
                     </div>
                 </div>
                 <div class="restaurants">
@@ -32,11 +32,6 @@
                         <RestaurantList :restaurant="r" />
                     </div>
                 </div>
-                <!--<div v-if="restaurantsByPrice !== null" class="restaurants">
-                    <div v-for="r in restaurantsByPrice">
-                        <RestaurantList :restaurant="r" />
-                    </div>
-                </div>-->
                 <div class="map">
                     <Map/>
                 </div>
@@ -50,6 +45,7 @@
     import {mapGetters} from "vuex";
     import RestaurantList from "../../components/restaurant/RestaurantList";
     import Map from "../../components/map/Map";
+    import {createParameters} from "../../helpers/createParameters";
 
     export default {
         components: {Map, RestaurantList, HeaderSearch},
@@ -58,15 +54,21 @@
         },
         methods: {
             selectPrice (price) {
-               return this.$store.dispatch('restaurantsModule/getRestaurantsList', price)
+               return this.$store.dispatch('restaurantsModule/getRestaurantsList',createParameters('', price))
             },
-            clickHandler (value) {
-               /*return this.$store.dispatch('restaurantsModule/getRestaurantsList', value)*/
+            clickHandler (ethnicity) {
+               return this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters(ethnicity))
+            },
+            viewAll () {
+                return this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters('', 1))
+            },
+            searchByName (q) {
+                return this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters('', '', q))
             }
         },
         mounted () {
             this.$store.dispatch('restaurantsModule/getEthnicityList')
-            this.$store.dispatch('restaurantsModule/getRestaurantsList')
+            this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters('', 2))
             this.$refs['lowPrice'].focus()
 
         }
@@ -78,10 +80,13 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        height: 100%;
         background: white;
         position: relative;
 
         .content {
+            width: 100%;
+            height: 100%;
             .inner {
                 display: flex;
                 justify-content: space-between;
@@ -99,7 +104,7 @@
                     width: 203px;
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-between;
+
 
                     &--ethnicity {
                         display: flex;
@@ -107,6 +112,7 @@
                         height: 247px;
                         overflow: auto;
                         margin-top: 35px;
+                        margin-bottom: 30px;
                         padding-left: 10px;
 
                         .group {

@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        <div class="logo">
+        <router-link to="/intro" class="logo">
             <img class="logo--desk" src="../../img/logo.png" alt="">
             <img class="logo--mob" src="../../img/logo-mob.png" alt="">
-        </div>
+        </router-link>
     </div>
 </template>
 
@@ -12,6 +12,7 @@
 </script>
 
 <style scoped lang="scss">
+
     .container {
         display: flex;
         justify-content: center;
