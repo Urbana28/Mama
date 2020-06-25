@@ -5,7 +5,7 @@
                 <div class="menu--nav">
                     <ul class="list">
                         <li class="item">
-                            <router-link id="recommendation" to="/recommendA">Give recommendation</router-link>
+                            <router-link id="recommendation" to="/recommend/c">Give recommendation</router-link>
                         </li>
                         <li class="item">
                             <router-link id="invite" to="/inviteFriends">Invite Friends</router-link>
@@ -36,8 +36,8 @@
                     <SearchMobile :filterHandler="openFilter" :callback="searchByName"/>
                 </div>
                 <div class="list">
-                    <div v-for="r in RESTAURANTS" class="restaurant">
-                        <RestaurantList :restaurant="r"/>
+                    <div v-for="r in RESTAURANTS" :key="r.id" class="restaurant">
+                        <RestaurantList :ethnicity="ETHNICITY" :restaurant="r"/>
                     </div>
                 </div>
             </div>

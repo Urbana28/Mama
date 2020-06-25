@@ -20,7 +20,10 @@
                         </span>
                     </div>
                     <div class="field">
-                        <SimpleInput :name="restaurantField" placeholder="Begin typing name restaurant "/>
+                        <SimpleInput :fieldValue="CHOSEN_RESTAURANT" :search="searchRestaurant" :callback="showField" :name="restaurantField" placeholder="Begin typing name restaurant "/>
+                    </div>
+                    <div v-if="isFieldChange" class="variants">
+                        <div v-on:click="setFieldValue(r.name)" v-for="r in RESTAURANTS" :key="r.id" class="resto">{{r.name}}</div>
                     </div>
                 </div>
                 <div class="question-restaurant">
@@ -28,8 +31,14 @@
                         What dish would you recommend?
                     </div>
                     <div v-for="d in dishFields" class="field">
-                        <SimpleInput :placeholder="d.placeholder"/>
+                        <SimpleInput  :placeholder="d.placeholder"/>
                     </div>
+                    <!--<div v-if="isFieldChange" class="dishes">
+                        <div v-on:click="setDishFieldValue('Pasta')" class="dish">Pasta</div>
+                        <div v-on:click="setDishFieldValue('Chicken')" class="dish">Chicken</div>
+                        <div v-on:click="setDishFieldValue('Ramen')" class="dish">Ramen</div>
+                        <div v-on:click="setDishFieldValue('Soup')" class="dish">Soup</div>
+                    </div>-->
                     <div class="add-btn">
                         <div class="add-btn--circle"></div>
                         <button v-on:click="addAnotherDish">+ Add Another Dish</button>
@@ -48,6 +57,8 @@
     import Button from "../../components/button/Button";
     import Header from "../../components/headers/Header";
     import BackArrow from "../../components/button/BackArrow";
+    import {mapGetters} from "vuex";
+    import {createParameters} from "../../helpers/createParameters";
 
     export default {
         name: 'RecommendC',
@@ -55,17 +66,40 @@
         data () {
             return {
                 restaurantField: '',
+                dishField: '',
                 dishFields: [
                     { placeholder: 'Begin typing name of dish', name: 'Dish1'}
-                ]
+                ],
+                isFieldChange: false
             }
         },
         methods : {
             addAnotherDish () {
                 let newDish = {placeholder: 'Begin typing name of dish', name: `Dish${this.dishFields.length + 1}`}
                 this.dishFields = [...this.dishFields, newDish]
+            },
+            showField (value) {
+               this.isFieldChange = value
+            },
+           /* setFieldValue (value) {
+                this.fieldValue = value
+                this.isFieldChange = false
+            },*/
+            setFieldValue (value) {
+                this.$store.commit('restaurantsModule/SET_CHOSEN_RESTAURANT', value)
+                this.isFieldChange = false
+            },
+            searchRestaurant (q) {
+                this.isFieldChange = true
+                this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters('', '', q))
             }
-        }
+        },
+        computed: {
+            ...mapGetters('restaurantsModule', ['RESTAURANTS', 'CHOSEN_RESTAURANT'])
+        },
+         mounted() {
+            this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters())
+         }
     }
 </script>
 
@@ -135,12 +169,13 @@
                 justify-content: center;
                 align-items: center;
 
-
                 .question-restaurant {
                     margin-bottom: 36px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
+                    position: relative;
+
                     .question {
                         margin-bottom: 10px;
                         font-family: 'Montserrat',sans-serif;
@@ -153,6 +188,74 @@
 
                     .field {
                         width: 300px;
+                    }
+
+                    .variants {
+                        background: rgba(253, 253, 253, 1);;
+                        display: flex;
+                        flex-grow: 1;
+                        flex-direction: column;
+                        position: absolute;
+                        width: 390px;
+                        z-index: 60;
+                        padding: 14px;
+                        top: 61px;
+                        border-radius: 15px;
+                        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+
+                        .resto {
+                            margin-bottom: 5px;
+                            transition: .7s;
+                            overflow: hidden;
+                            font-size: 16px;
+                            font-family: 'Montserrat', sans-serif;
+                            font-weight: normal;
+
+                            &:hover, &:focus {
+                                transition: .3s;
+                                background: #fecc2f;
+                                border-radius: 15px;
+                            }
+                        }
+
+                        @media screen and (max-width: 414px){
+                            top: 90px;
+                        }
+                        @media screen and (max-width: 375px){
+                            width: 340px;
+                        }
+                        @media screen and (max-width: 375px){
+                            width: 280px;
+                            .resto {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                    .dishes {
+                        background: rgba(253, 253, 253, 1);;
+                        display: flex;
+                        flex-grow: 1;
+                        flex-direction: column;
+                        position: absolute;
+                        width: 390px;
+                        z-index: 58;
+                        padding: 14px;
+                        top: 61px;
+                        border-radius: 15px;
+                        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+                        .dish {
+                            margin-bottom: 5px;
+                            transition: .7s;
+                            overflow: hidden;
+                            font-size: 16px;
+                            font-family: 'Montserrat', sans-serif;
+                            font-weight: normal;
+                            &:hover {
+                                transition: .3s;
+                                background: #fecc2f;
+                                border-radius: 15px;
+                            }
+                        }
                     }
                 }
 

@@ -1,6 +1,10 @@
 <template>
     <div class="input-wrapper">
-        <input v-model.trim="vModel" :placeholder="placeholder" :name="name"  class="input" type="text">
+        <input v-on:change="search($event.target._value)"
+               v-on:click="callback(true)"
+               v-model.trim="fieldValue"
+               :placeholder="placeholder"
+               :name="name"  class="input" type="text">
     </div>
 </template>
 
@@ -10,7 +14,10 @@
         props : {
             placeholder: String,
             vModel: String,
-            name: String
+            name: String,
+            callback: Function,
+            search: Function,
+            fieldValue: String
         }
     }
 </script>

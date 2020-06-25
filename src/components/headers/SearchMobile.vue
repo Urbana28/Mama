@@ -1,8 +1,8 @@
 <template>
     <div class="search-container">
-        <div class="btn-search" :style="{left:btnLeft}"><button><img src="../../img/search.png" alt=""></button></div>
+        <div class="btn-search"><button><img src="../../img/search.png" alt=""></button></div>
         <input v-on:change="callback($event.currentTarget.value)" placeholder="Ask MAMA"/>
-        <div class="btn-filter" :style="{right:btnRight}"><button v-on:click="filterHandler(true)"><img src="../../img/filter-mob.png" alt=""></button></div>
+        <div class="btn-filter"><button v-on:click="filterHandler(true)"><img src="../../img/filter-mob.png" alt=""></button></div>
     </div>
 </template>
 

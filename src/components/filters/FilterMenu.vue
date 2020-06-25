@@ -97,6 +97,22 @@ export default {
                         height: 34px;
                     }
                 }
+
+                @media screen and (max-width: 320px) {
+                        font-size: 20px;
+                    top: 25px;
+                    .icon {
+                        img {
+                            height: 25px;
+                            width: 15px;
+                        }
+                    }
+                    .close-icon {
+                        img {
+                            height: 30px;
+                        }
+                    }
+                }
             }
 
             .inner {
@@ -166,6 +182,14 @@ export default {
                             }
                         }
                     }
+
+                    @media screen and (max-width: 320px){
+                        font-size: 17px;
+
+                        .list {
+                            font-size: 12px;
+                        }
+                    }
                 }
 
                 .price-category {
@@ -184,7 +208,7 @@ export default {
                         font-size: 11px;
                         font-weight: 500;
                         transition: .5s;
-                        margin: 0 15px;
+                        margin: 10px 15px;
 
                         &:hover {
                             cursor: pointer;
@@ -203,19 +227,29 @@ export default {
                             border-radius: 4px;
                         }
                     }
+
+                    @media screen and (max-width: 320px){
+                        font-size: 17px;
+                        button {
+                            width: 50px;
+                            height: 30px;
+                            margin: 10px 10px;
+                            font-size: 10px;
+                        }
+                    }
                 }
 
             }
             .buttons {
                 position: absolute;
-                bottom: 0;
+                bottom:50px;
                 width: 100%;
                 display: flex;
                 justify-content: space-around;
                 padding: 17px;
                 button {
-                    width: 160px;
-                    height: 45px;
+                    width: 150px;
+                    height: 43px;
                     outline: none;
                     border: 4px solid #ffcc00;
                     background: none;
@@ -232,6 +266,20 @@ export default {
                         color: #ff3c00;
                         cursor: pointer;
                         transition: .3s;
+                    }
+                }
+
+                @media screen and (max-width: 375px) {
+                    bottom: 30px;
+                }
+
+                @media screen and (max-width: 320px) {
+                    button {
+                        width: 120px;
+                        height: 37px;
+                        border: 3px solid #ffcc00;
+                        font-size: 15px;
+                        line-height: 28px;
                     }
                 }
             }

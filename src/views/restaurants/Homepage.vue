@@ -29,7 +29,8 @@
                 </div>
                 <div class="restaurants">
                     <div v-for="r in RESTAURANTS" :key="r.id">
-                        <RestaurantList :restaurant="r" />
+                        <RestaurantList :ethnicity="ETHNICITY" :restaurant="r" />
+                        <Observer v-on:intersect="intersected" />
                     </div>
                 </div>
                 <div class="map">
@@ -46,9 +47,15 @@
     import RestaurantList from "../../components/restaurant/RestaurantList";
     import Map from "../../components/map/Map";
     import {createParameters} from "../../helpers/createParameters";
+    import Observer from "../../helpers/Observer";
 
     export default {
-        components: {Map, RestaurantList, HeaderSearch},
+        components: {Observer, Map, RestaurantList, HeaderSearch},
+        data () {
+            return {
+                page: 2
+            }
+        },
         computed: {
             ...mapGetters('restaurantsModule', ['ETHNICITY', 'RESTAURANTS'])
         },
@@ -64,13 +71,16 @@
             },
             searchByName (q) {
                 return this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters('', '', q))
+            },
+            intersected () {
+                console.log('hi')
+               /* this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters('', '', ''))*/
             }
         },
         mounted () {
             this.$store.dispatch('restaurantsModule/getEthnicityList')
-            this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters('', 2))
             this.$refs['lowPrice'].focus()
-
+            this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters('', 2))
         }
     }
 </script>
@@ -89,9 +99,7 @@
             height: 100%;
             .inner {
                 display: flex;
-                justify-content: space-between;
-                margin-left: 69px;
-                margin-right: 69px;
+                justify-content: space-around;
                 margin-top: 17px;
                 ::-webkit-scrollbar { /* chrome based */
                     width: 0;  /* ширина scrollbar'a */
@@ -104,7 +112,7 @@
                     width: 203px;
                     display: flex;
                     flex-direction: column;
-
+                    margin-right: 15px;
 
                     &--ethnicity {
                         display: flex;
@@ -239,11 +247,11 @@
                     display: flex;
                     flex-direction: column;
                     overflow: auto;
-
+                    margin-right: 15px;
                 }
 
                 .map {
-                    width: 216px;
+                    width: 280px;
                     height: 452px;
                 }
             }

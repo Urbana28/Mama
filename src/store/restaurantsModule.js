@@ -6,7 +6,9 @@ export const restaurantsModule = {
         ethnicity: [],
         letters: [],
         restaurants: null,
-        searchedRestaurants: null
+        markers: null,
+        searchedRestaurants: null,
+        chosenRestaurant: null
     },
     mutations: {
         SET_ETHNICITY: (state, ethnicityList) => {
@@ -18,8 +20,11 @@ export const restaurantsModule = {
        SET_RESTAURANTS_LIST: (state, restaurantsList) => {
             state.restaurants = restaurantsList
        },
-        searchRestaurant(state, value) {
-            state.searchedRestaurants = state.restaurants.filter(r => r.name.toLowerCase().indexOf(value.toLowerCase()) > -1)
+        SET_MARKERS: (state, list) => {
+            state.markers = list
+        },
+        SET_CHOSEN_RESTAURANT: (state, value) => {
+            state.chosenRestaurant = value
         }
     },
     actions: {
@@ -37,8 +42,8 @@ export const restaurantsModule = {
             try {
                 const list = await restaurantsAPI.getRestaurantsBy(queryParameters)
                 console.log(list)
-                /*const list = await restaurantsAPI.getRestaurants(price)*/
                 context.commit('SET_RESTAURANTS_LIST', list)
+                context.commit('SET_MARKERS', list)
             } catch (e) {
                 console.log(e)
             }
@@ -53,6 +58,12 @@ export const restaurantsModule = {
         },
         RESTAURANTS (state) {
             return state.restaurants
+        },
+        MARKERS (state) {
+            return state.markers
+        },
+        CHOSEN_RESTAURANT (state) {
+            return state.chosenRestaurant
         }
     }
 }

@@ -2,7 +2,7 @@
     <div class="map">
         <GmapMap
                 :center="this.center"
-                :zoom="7"
+                :zoom="13"
                 map-type-id="terrain"
                 style="width: 100%; height: 100%"
         >
@@ -15,8 +15,8 @@
             </GmapInfoWindow>
             <GmapMarker
                     :key="index"
-                    v-for="(m, index) in this.markers"
-                    :position="m.position"
+                    v-for="(m, index) in MARKERS"
+                    :position="m.point"
                     :clickable="true"
                     :draggable="true"
                     @click="setInfo(m)"
@@ -28,13 +28,14 @@
 
 <script>
     import GmapCustomMarker from 'vue2-gmap-custom-marker';
+    import {mapGetters} from "vuex";
 
     export default {
         name: 'Map',
         components: {'gmap-custom-marker': GmapCustomMarker},
         methods: {
             setInfo (m, index) {
-                this.infoPosition = m.position
+                this.infoPosition = m.point
 
                 if (this.infoCurrentKey === index) {
                     this.infoOpened = !this.infoOpened;
@@ -56,14 +57,6 @@
         data() {
             return {
                 center: {lat: 34.052235, lng: -118.243683},
-                markers: [
-                    {
-                        position: {lat: 34.055235, lng: -118.243684}
-                    },
-                    {
-                        position: {lat: 10.0, lng: 10.0}
-                    }
-                ],
                 markerOptions: {
                     url: 'https://image.flaticon.com/icons/svg/3013/3013926.svg',
                     size: {width: 60, height: 90, f: 'px', b: 'px',},
@@ -79,9 +72,12 @@
                         width: 0,
                         height: -35
                     },
-                    content: 'Test'
+                    content: 'Test bla bla bla bla bla bla'
                 }
             }
+        },
+        computed : {
+            ...mapGetters('restaurantsModule', ['MARKERS']),
         }
     }
 </script>

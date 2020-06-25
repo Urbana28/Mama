@@ -189,6 +189,10 @@
                         color:  #ffcc00;
                         font-size: 11.5px;
                         font-family: "Montserrat", sans-serif;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
                     }
                 }
 

@@ -1,7 +1,7 @@
 <template>
-    <div class="resto" :id="restaurant.id">
+    <div class="resto" :id="restaurant.id" v-on:click="showOnMap(restaurant.point.lat, restaurant.point.lng)">
         <div class="resto--info">
-            <div class="flag"><img src="../../img/japan.png" alt=""></div>
+            <div v-for="e in ethnicity" v-if="e.id === restaurant.ethnicity" class="flag"><img :src="e.flag" alt=""></div>
             <div class="info">
                 <div class="name">{{restaurant.name}}</div>
                 <div class="place">
@@ -16,17 +16,25 @@
 </template>
 
 <script>
+    import {createParameters} from "../../helpers/createParameters";
+
     export default {
         name: 'RestaurantList',
         props: {
             restaurant: {
                 id: Number,
-                /*img: String,*/
                 name: String,
                 price: Number,
                 ethnicity: String,
                 address: Object,
                 /*distance: String*/
+            },
+            ethnicity: Array
+        },
+        methods: {
+            showOnMap(lat, lng) {
+                debugger
+                this.$store.dispatch('restaurantsModule/getRestaurantsList', createParameters('', '', '', lat, lng))
             }
         }
     }

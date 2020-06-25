@@ -18,6 +18,9 @@ const store = new Vuex.Store({
                 const response = await authAPI.login(payload)
                 console.log("response")
                 localStorage.setItem('token', response.data.access)
+                if(response.status === 200) {
+                   window.location = '/homepage'
+                }
             } catch (e) {
                 console.log(e)
             }
